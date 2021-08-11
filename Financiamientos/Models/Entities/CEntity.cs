@@ -25,13 +25,13 @@ namespace Financiamientos.Models.Entities
             if(value!=null)
             {
                 SqlParameter parameter = new SqlParameter("@P", value);
-                string query = $"SELECT * FROM {selectedTable} WHERE {filter} @P";
+                string query = $"SELECT TOP 100 * FROM {selectedTable} WHERE {filter} @P";
 
                 return await IQueryExecutor.TableReturnerExecutor(query, new SqlParameter[] { parameter });
             }
             else if(filter==null & value==null)
             {
-                string query = $"SELECT * FROM {selectedTable}";
+                string query = $"SELECT TOP 100 * FROM {selectedTable}";
                 return await IQueryExecutor.TableReturnerExecutor(query);
             }
             else

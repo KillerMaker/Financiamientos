@@ -33,15 +33,16 @@ namespace Financiamientos.Forms
             this.panel3 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnCreateNew = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtValue = new System.Windows.Forms.MaskedTextBox();
+            this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.button4 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.cmbColumnName = new System.Windows.Forms.ComboBox();
+            this.btnDetail = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.dtgvLoans = new System.Windows.Forms.DataGridView();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -56,9 +57,9 @@ namespace Financiamientos.Forms
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.button5);
             this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.button2);
+            this.panel3.Controls.Add(this.btnCreateNew);
             this.panel3.Controls.Add(this.panel1);
-            this.panel3.Controls.Add(this.button3);
+            this.panel3.Controls.Add(this.btnDetail);
             this.panel3.Controls.Add(this.label10);
             this.panel3.Controls.Add(this.dtgvLoans);
             this.panel3.Location = new System.Drawing.Point(75, 96);
@@ -93,36 +94,52 @@ namespace Financiamientos.Forms
             this.label3.TabIndex = 26;
             this.label3.Text = "Barra de Busqueda";
             // 
-            // button2
+            // btnCreateNew
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(243)))), ((int)(((byte)(43)))));
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(257, 670);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(194, 36);
-            this.button2.TabIndex = 25;
-            this.button2.Text = "Crear Nuevo";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnCreateNew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(243)))), ((int)(((byte)(43)))));
+            this.btnCreateNew.FlatAppearance.BorderSize = 0;
+            this.btnCreateNew.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnCreateNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCreateNew.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnCreateNew.Image = ((System.Drawing.Image)(resources.GetObject("btnCreateNew.Image")));
+            this.btnCreateNew.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCreateNew.Location = new System.Drawing.Point(257, 670);
+            this.btnCreateNew.Name = "btnCreateNew";
+            this.btnCreateNew.Size = new System.Drawing.Size(194, 36);
+            this.btnCreateNew.TabIndex = 25;
+            this.btnCreateNew.Text = "Crear Nuevo";
+            this.btnCreateNew.UseVisualStyleBackColor = false;
+            this.btnCreateNew.Click += new System.EventHandler(this.button2_Click);
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.txtValue);
+            this.panel1.Controls.Add(this.dtpFecha);
             this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.btnSearch);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Controls.Add(this.cmbColumnName);
             this.panel1.Location = new System.Drawing.Point(14, 51);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1222, 53);
             this.panel1.TabIndex = 24;
+            // 
+            // txtValue
+            // 
+            this.txtValue.Location = new System.Drawing.Point(465, 16);
+            this.txtValue.Name = "txtValue";
+            this.txtValue.Size = new System.Drawing.Size(359, 23);
+            this.txtValue.TabIndex = 29;
+            // 
+            // dtpFecha
+            // 
+            this.dtpFecha.Location = new System.Drawing.Point(496, 16);
+            this.dtpFecha.Name = "dtpFecha";
+            this.dtpFecha.Size = new System.Drawing.Size(302, 23);
+            this.dtpFecha.TabIndex = 28;
+            this.dtpFecha.Visible = false;
             // 
             // button4
             // 
@@ -140,28 +157,22 @@ namespace Financiamientos.Forms
             this.button4.Text = "Busqueda Avanzada";
             this.button4.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // btnSearch
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(243)))), ((int)(((byte)(43)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(848, 10);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(178, 35);
-            this.button1.TabIndex = 25;
-            this.button1.Text = "Buscar";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(476, 17);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(351, 23);
-            this.textBox1.TabIndex = 26;
+            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(243)))), ((int)(((byte)(43)))));
+            this.btnSearch.FlatAppearance.BorderSize = 0;
+            this.btnSearch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
+            this.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSearch.Location = new System.Drawing.Point(848, 10);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(178, 35);
+            this.btnSearch.TabIndex = 25;
+            this.btnSearch.Text = "Buscar";
+            this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.button1_Click);
             // 
             // label2
             // 
@@ -183,30 +194,38 @@ namespace Financiamientos.Forms
             this.label1.TabIndex = 24;
             this.label1.Text = "Campo";
             // 
-            // comboBox1
+            // cmbColumnName
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(101, 16);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(279, 23);
-            this.comboBox1.TabIndex = 23;
+            this.cmbColumnName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbColumnName.FormattingEnabled = true;
+            this.cmbColumnName.Items.AddRange(new object[] {
+            "Financiamiento",
+            "Codigo Cliente",
+            "Cliente",
+            "Codigo Vendedor",
+            "Vendedor",
+            "Fecha de Creacion"});
+            this.cmbColumnName.Location = new System.Drawing.Point(101, 16);
+            this.cmbColumnName.Name = "cmbColumnName";
+            this.cmbColumnName.Size = new System.Drawing.Size(279, 23);
+            this.cmbColumnName.TabIndex = 23;
+            this.cmbColumnName.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // button3
+            // btnDetail
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(243)))), ((int)(((byte)(43)))));
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(14, 670);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(194, 36);
-            this.button3.TabIndex = 22;
-            this.button3.Text = "Ver Detalle";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnDetail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(243)))), ((int)(((byte)(43)))));
+            this.btnDetail.FlatAppearance.BorderSize = 0;
+            this.btnDetail.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnDetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDetail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnDetail.Image = ((System.Drawing.Image)(resources.GetObject("btnDetail.Image")));
+            this.btnDetail.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDetail.Location = new System.Drawing.Point(14, 670);
+            this.btnDetail.Name = "btnDetail";
+            this.btnDetail.Size = new System.Drawing.Size(194, 36);
+            this.btnDetail.TabIndex = 22;
+            this.btnDetail.Text = "Ver Detalle";
+            this.btnDetail.UseVisualStyleBackColor = false;
             // 
             // label10
             // 
@@ -275,19 +294,20 @@ namespace Financiamientos.Forms
 
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnCreateNew;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ComboBox cmbColumnName;
+        private System.Windows.Forms.Button btnDetail;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DataGridView dtgvLoans;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.DateTimePicker dtpFecha;
+        private System.Windows.Forms.MaskedTextBox txtValue;
     }
 }

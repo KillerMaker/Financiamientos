@@ -23,7 +23,7 @@ namespace Financiamientos.Forms
 
         private async void CreateLoan_Load(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = await CEntity.SimpleSelect("CLIENTE");
+            dataGridView1.DataSource = await CEntity.SimpleSelect("VISTA_CLIENTE");
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -58,11 +58,11 @@ namespace Financiamientos.Forms
                 if (txtValue.Text == null)
                     MessageBox.Show("El Criterio no puede estar vacio al momento de buscar", "Error en la busqueda");
 
-                dataGridView1.DataSource= await CEntity.SimpleSelect("CLIENTE", columnName + " = ", txtValue.Text);
+                dataGridView1.DataSource= await CEntity.SimpleSelect("VISTA_CLIENTE", columnName + " = ", txtValue.Text);
             }
             catch(Exception ex)
             {
-                throw new Exception(ex.Message);
+                MessageBox.Show(ex.Message, "Error en la busqueda");
             }
 
         }
