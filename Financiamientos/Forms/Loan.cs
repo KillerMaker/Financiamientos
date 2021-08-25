@@ -116,5 +116,42 @@ namespace Financiamientos.Forms
                     return;
             }
         }
+
+        private void btnDetail_Click(object sender, EventArgs e)
+        {
+            if (dtgvLoans.SelectedRows.Count.Equals(1))
+            {
+                try
+                {
+                    DataGridViewRow row = dtgvLoans.SelectedRows[0];
+
+                    CLoan loan = new CLoan
+                        (
+                            row.Cells[6].Value.ToString(),//Codigo Cliente
+                            row.Cells[8].Value.ToString(),//Codigo Usuario
+                            Convert.ToDateTime(row.Cells[2].Value),//Fecha
+                            Convert.ToDecimal(row.Cells[1].Value),//Monto Capital
+                            Convert.ToInt32(row.Cells[3].Value),//Numero de Cuotas
+                            row.Cells[5].Value.ToString(),//Estado
+                            Convert.ToDecimal(row.Cells[4].Value),//Tasa de Interes
+                            row.Cells[0].Value.ToString()//Codigo de financiamiento
+                        );
+
+                    home.OpenForm(new LoanDetail(loan));
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error al seleccionar financiamiento");
+                }
+                
+            }
+            else if (dtgvLoans.SelectedRows.Count > 1)
+                MessageBox.Show("Seleccione solo un financiamiento por favor", 
+                    "Error al momento de seleccionar financiamiento");
+            else
+                MessageBox.Show("Debe seleccionar un financiamiento por favor", 
+                    "Error al momento de seleccionar financiamiento");
+
+        }
     }
 }

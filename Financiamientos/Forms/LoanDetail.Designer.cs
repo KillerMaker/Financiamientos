@@ -1,7 +1,7 @@
 ﻿
 namespace Financiamientos.Forms
 {
-    partial class Loan
+    partial class LoanDetail
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace Financiamientos.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Loan));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoanDetail));
             this.panel3 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -62,10 +62,11 @@ namespace Financiamientos.Forms
             this.panel3.Controls.Add(this.btnDetail);
             this.panel3.Controls.Add(this.label10);
             this.panel3.Controls.Add(this.dtgvLoans);
-            this.panel3.Location = new System.Drawing.Point(75, 96);
+            this.panel3.Location = new System.Drawing.Point(-56, 5);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1263, 730);
-            this.panel3.TabIndex = 19;
+            this.panel3.TabIndex = 22;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // button5
             // 
@@ -109,7 +110,6 @@ namespace Financiamientos.Forms
             this.btnCreateNew.TabIndex = 25;
             this.btnCreateNew.Text = "Crear Nuevo";
             this.btnCreateNew.UseVisualStyleBackColor = false;
-            this.btnCreateNew.Click += new System.EventHandler(this.button2_Click);
             // 
             // panel1
             // 
@@ -172,7 +172,6 @@ namespace Financiamientos.Forms
             this.btnSearch.TabIndex = 25;
             this.btnSearch.Text = "Buscar";
             this.btnSearch.UseVisualStyleBackColor = false;
-            this.btnSearch.Click += new System.EventHandler(this.button1_Click);
             // 
             // label2
             // 
@@ -209,7 +208,6 @@ namespace Financiamientos.Forms
             this.cmbColumnName.Name = "cmbColumnName";
             this.cmbColumnName.Size = new System.Drawing.Size(279, 23);
             this.cmbColumnName.TabIndex = 23;
-            this.cmbColumnName.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // btnDetail
             // 
@@ -226,7 +224,6 @@ namespace Financiamientos.Forms
             this.btnDetail.TabIndex = 22;
             this.btnDetail.Text = "Ver Detalle";
             this.btnDetail.UseVisualStyleBackColor = false;
-            this.btnDetail.Click += new System.EventHandler(this.btnDetail_Click);
             // 
             // label10
             // 
@@ -254,33 +251,34 @@ namespace Financiamientos.Forms
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(243)))), ((int)(((byte)(43)))));
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Location = new System.Drawing.Point(75, 79);
+            this.panel4.Location = new System.Drawing.Point(-56, -12);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1263, 11);
-            this.panel4.TabIndex = 18;
+            this.panel4.TabIndex = 21;
+            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label14.Location = new System.Drawing.Point(75, 51);
+            this.label14.Location = new System.Drawing.Point(-56, -40);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(99, 25);
-            this.label14.TabIndex = 17;
+            this.label14.TabIndex = 20;
             this.label14.Text = "Prestamos";
+            this.label14.Click += new System.EventHandler(this.label14_Click);
             // 
-            // Loan
+            // LoanDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1384, 895);
+            this.ClientSize = new System.Drawing.Size(1150, 694);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.label14);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Loan";
-            this.Text = "Loan";
-            this.Load += new System.EventHandler(this.Loan_Load);
+            this.Name = "LoanDetail";
+            this.Text = "LoanDetail";
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -294,9 +292,13 @@ namespace Financiamientos.Forms
         #endregion
 
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnCreateNew;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.MaskedTextBox txtValue;
+        private System.Windows.Forms.DateTimePicker dtpFecha;
+        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -306,9 +308,5 @@ namespace Financiamientos.Forms
         private System.Windows.Forms.DataGridView dtgvLoans;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.DateTimePicker dtpFecha;
-        private System.Windows.Forms.MaskedTextBox txtValue;
     }
 }
