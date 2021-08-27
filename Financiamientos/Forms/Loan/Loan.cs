@@ -17,6 +17,7 @@ namespace Financiamientos.Forms
         private string columnName;
         private Size ValueSize;
         private readonly Home home;
+
         public Loan(Home home)
         {
             this.home = home;
@@ -39,9 +40,11 @@ namespace Financiamientos.Forms
             try 
             {
                 if (dtpFecha.Visible.Equals(true))
-                    dtgvLoans.DataSource = await CEntity.SimpleSelect("VISTA_PRESTAMO", columnName + "=", dtpFecha.Value.ToString());
+                    dtgvLoans.DataSource = await CEntity.SimpleSelect("VISTA_PRESTAMO",
+                        columnName + "=", dtpFecha.Value.ToString());
                 else
-                    dtgvLoans.DataSource = await CEntity.SimpleSelect("VISTA_PRESTAMO", columnName + "=", txtValue.Text);
+                    dtgvLoans.DataSource = await CEntity.SimpleSelect("VISTA_PRESTAMO", 
+                        columnName + "=", txtValue.Text);
             }
             catch(Exception ex)
             {
@@ -137,7 +140,7 @@ namespace Financiamientos.Forms
                             row.Cells[0].Value.ToString()//Codigo de financiamiento
                         );
 
-                    home.OpenForm(new LoanDetail(loan));
+                    home.OpenForm(new LoanDetail(home,loan));
                 }
                 catch(Exception ex)
                 {

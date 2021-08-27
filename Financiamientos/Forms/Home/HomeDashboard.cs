@@ -14,10 +14,6 @@ namespace Financiamientos.Forms
     public partial class HomeDashboard : Form
     {
         private readonly Home home;
-        private int PayedLoans;
-        private int ActiveLoans;
-        private int canceledLoans;
-        private int overdureLoans;
 
         private DataTable installsmetsDueToToday;
         private DataTable last10Paymets;
@@ -53,15 +49,10 @@ namespace Financiamientos.Forms
                 arrears = await IQueryExecutor.TableReturnerExecutor("SELECT * FROM VISTA_CUOTAS_ATRASADAS");
                 DataTable loanInfo= await IQueryExecutor.TableReturnerExecutor("SELECT * FROM VISTA_PRESTAMO_INFO");
 
-                PayedLoans = int.Parse(loanInfo.Rows[0].ItemArray[0].ToString());
-                ActiveLoans = int.Parse(loanInfo.Rows[0].ItemArray[1].ToString());
-                canceledLoans = int.Parse(loanInfo.Rows[0].ItemArray[2].ToString());
-                overdureLoans = int.Parse(loanInfo.Rows[0].ItemArray[3].ToString());
-
-                lblPayedLoans.Text = PayedLoans.ToString();
-                lblActiveLoans.Text = ActiveLoans.ToString();
-                lblCanceledLoans.Text = canceledLoans.ToString();
-                lblOverdureLoans.Text = overdureLoans.ToString();
+                lblPayedLoans.Text = loanInfo.Rows[0].ItemArray[0].ToString();
+                lblActiveLoans.Text = loanInfo.Rows[0].ItemArray[1].ToString();
+                lblCanceledLoans.Text = loanInfo.Rows[0].ItemArray[2].ToString();
+                lblOverdureLoans.Text = loanInfo.Rows[0].ItemArray[3].ToString();
 
                 dtgvInstallsmetDueToday.DataSource = installsmetsDueToToday;
                 dtgvLast10Paymets.DataSource = last10Paymets;
