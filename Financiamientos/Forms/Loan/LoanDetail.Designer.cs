@@ -174,7 +174,7 @@ namespace Financiamientos.Forms
             this.lblDate.AutoSize = true;
             this.lblDate.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(182)))), ((int)(((byte)(217)))));
-            this.lblDate.Location = new System.Drawing.Point(513, 84);
+            this.lblDate.Location = new System.Drawing.Point(496, 84);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(188, 25);
             this.lblDate.TabIndex = 26;
@@ -503,6 +503,7 @@ namespace Financiamientos.Forms
             this.button1.TabIndex = 32;
             this.button1.Text = "Insertar Pago";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnSearch
             // 
@@ -519,6 +520,7 @@ namespace Financiamientos.Forms
             this.btnSearch.TabIndex = 31;
             this.btnSearch.Text = "Actualizar";
             this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // LoanDetail
             // 

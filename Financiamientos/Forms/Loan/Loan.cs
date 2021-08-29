@@ -15,12 +15,18 @@ namespace Financiamientos.Forms
     public partial class Loan : Form
     {
         private string columnName;
+        private string likeChar;
+        private string filter;
         private Size ValueSize;
-        private readonly Home home;
 
-        public Loan(Home home)
+        private readonly Home home;
+        private readonly string query;
+
+        public Loan(Home home,string query="SELECT * FROM VISTA_PRESTAMO")
         {
             this.home = home;
+            this.query = query;
+
             InitializeComponent();
             ValueSize = txtValue.Size;
         }
@@ -28,11 +34,12 @@ namespace Financiamientos.Forms
         private void button2_Click(object sender, EventArgs e)
         {
             home.OpenForm(new CreateLoan(home));
+            Dispose();
         }
 
         private async void Loan_Load(object sender, EventArgs e)
         {
-            dtgvLoans.DataSource = await CEntity.SimpleSelect("VISTA_PRESTAMO");
+            dtgvLoans.DataSource = await IQueryExecutor.TableReturnerExecutor(query);
         }
 
         private async void button1_Click(object sender, EventArgs e)
@@ -40,11 +47,13 @@ namespace Financiamientos.Forms
             try 
             {
                 if (dtpFecha.Visible.Equals(true))
-                    dtgvLoans.DataSource = await CEntity.SimpleSelect("VISTA_PRESTAMO",
-                        columnName + "=", dtpFecha.Value.ToString());
+                    //Busqueda para campos que no soportan Fecha
+                    dtgvLoans.DataSource = await IQueryExecutor.TableReturnerExecutor(
+                        $@"SELECT * FROM VISTA_PRESTAMO WHERE {columnName} {filter} '{dtpFecha.Value}'");
                 else
-                    dtgvLoans.DataSource = await CEntity.SimpleSelect("VISTA_PRESTAMO", 
-                        columnName + "=", txtValue.Text);
+                    //Busqueda para campos que solo soportan Fecha
+                    dtgvLoans.DataSource = await IQueryExecutor.TableReturnerExecutor(
+                        $@"SELECT * FROM VISTA_PRESTAMO WHERE {columnName} {filter} '{likeChar}{txtValue.Text}{likeChar}'");
             }
             catch(Exception ex)
             {
@@ -66,6 +75,7 @@ namespace Financiamientos.Forms
                     txtValue.Size=new Size(ValueSize.Width / 4, ValueSize.Height);
                     txtValue.TextAlign = HorizontalAlignment.Right;
                     txtValue.Focus();
+                    
                     return;
                 case 1:
                     columnName = "[CODIGO CLIENTE]";
@@ -141,6 +151,7 @@ namespace Financiamientos.Forms
                         );
 
                     home.OpenForm(new LoanDetail(home,loan));
+                    Dispose();
                 }
                 catch(Exception ex)
                 {
@@ -148,6 +159,7 @@ namespace Financiamientos.Forms
                 }
                 
             }
+            //Valida que solo se pueda seleccionar un elemento del Dtgv
             else if (dtgvLoans.SelectedRows.Count > 1)
                 MessageBox.Show("Seleccione solo un financiamiento por favor", 
                     "Error al momento de seleccionar financiamiento");
@@ -155,6 +167,48 @@ namespace Financiamientos.Forms
                 MessageBox.Show("Debe seleccionar un financiamiento por favor", 
                     "Error al momento de seleccionar financiamiento");
 
+        }
+
+        private void cmbFilters_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch(cmbFilters.SelectedIndex)
+            {
+                case 0:
+                    filter = "=";
+                    likeChar = "";
+                    break;
+                case 1:
+                    filter = "!=";
+                    likeChar = "";
+                    break;
+                case 2:
+                    filter = ">";
+                    likeChar = "";
+                    break;
+                case 3:
+                    filter = "<";
+                    likeChar = "";
+                    break;
+                case 4:
+                    filter = ">=";
+                    likeChar = "";
+                    break;
+                case 5:
+                    filter = "<=";
+                    likeChar = "";
+                    break;
+                case 6:
+                    filter = " LIKE ";
+                    likeChar = "%";
+                    break;
+
+            }
+        }
+
+        //Recarga los datos del Dtgv
+        private async void btnReload_Click(object sender, EventArgs e)
+        {
+            dtgvLoans.DataSource = await IQueryExecutor.TableReturnerExecutor("SELECT * FROM VISTA_PRESTAMO");
         }
     }
 }

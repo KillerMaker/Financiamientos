@@ -35,11 +35,12 @@ namespace Financiamientos.Forms
             this.label3 = new System.Windows.Forms.Label();
             this.btnCreateNew = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbFilters = new System.Windows.Forms.ComboBox();
             this.txtValue = new System.Windows.Forms.MaskedTextBox();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.button4 = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbColumnName = new System.Windows.Forms.ComboBox();
             this.btnDetail = new System.Windows.Forms.Button();
@@ -47,6 +48,7 @@ namespace Financiamientos.Forms
             this.dtgvLoans = new System.Windows.Forms.DataGridView();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label14 = new System.Windows.Forms.Label();
+            this.btnReload = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvLoans)).BeginInit();
@@ -55,6 +57,7 @@ namespace Financiamientos.Forms
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.btnReload);
             this.panel3.Controls.Add(this.button5);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.btnCreateNew);
@@ -114,11 +117,12 @@ namespace Financiamientos.Forms
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.cmbFilters);
             this.panel1.Controls.Add(this.txtValue);
             this.panel1.Controls.Add(this.dtpFecha);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.btnSearch);
-            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.cmbColumnName);
             this.panel1.Location = new System.Drawing.Point(14, 51);
@@ -126,18 +130,46 @@ namespace Financiamientos.Forms
             this.panel1.Size = new System.Drawing.Size(1222, 53);
             this.panel1.TabIndex = 24;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(330, 18);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(43, 20);
+            this.label2.TabIndex = 31;
+            this.label2.Text = "Filtro";
+            // 
+            // cmbFilters
+            // 
+            this.cmbFilters.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFilters.FormattingEnabled = true;
+            this.cmbFilters.Items.AddRange(new object[] {
+            "Igual",
+            "Diferente",
+            "Mayor que",
+            "Menor que",
+            "Mayor o Igual a",
+            "Menor o Igual",
+            "Como"});
+            this.cmbFilters.Location = new System.Drawing.Point(393, 16);
+            this.cmbFilters.Name = "cmbFilters";
+            this.cmbFilters.Size = new System.Drawing.Size(111, 23);
+            this.cmbFilters.TabIndex = 30;
+            this.cmbFilters.SelectedIndexChanged += new System.EventHandler(this.cmbFilters_SelectedIndexChanged);
+            // 
             // txtValue
             // 
-            this.txtValue.Location = new System.Drawing.Point(465, 16);
+            this.txtValue.Location = new System.Drawing.Point(510, 16);
             this.txtValue.Name = "txtValue";
-            this.txtValue.Size = new System.Drawing.Size(359, 23);
+            this.txtValue.Size = new System.Drawing.Size(314, 23);
             this.txtValue.TabIndex = 29;
             // 
             // dtpFecha
             // 
-            this.dtpFecha.Location = new System.Drawing.Point(496, 16);
+            this.dtpFecha.Location = new System.Drawing.Point(510, 16);
             this.dtpFecha.Name = "dtpFecha";
-            this.dtpFecha.Size = new System.Drawing.Size(302, 23);
+            this.dtpFecha.Size = new System.Drawing.Size(288, 23);
             this.dtpFecha.TabIndex = 28;
             this.dtpFecha.Visible = false;
             // 
@@ -174,16 +206,6 @@ namespace Financiamientos.Forms
             this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(400, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 20);
-            this.label2.TabIndex = 25;
-            this.label2.Text = "Igual A:";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -207,7 +229,7 @@ namespace Financiamientos.Forms
             "Fecha de Creacion"});
             this.cmbColumnName.Location = new System.Drawing.Point(101, 16);
             this.cmbColumnName.Name = "cmbColumnName";
-            this.cmbColumnName.Size = new System.Drawing.Size(279, 23);
+            this.cmbColumnName.Size = new System.Drawing.Size(211, 23);
             this.cmbColumnName.TabIndex = 23;
             this.cmbColumnName.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -269,6 +291,22 @@ namespace Financiamientos.Forms
             this.label14.TabIndex = 17;
             this.label14.Text = "Prestamos";
             // 
+            // btnReload
+            // 
+            this.btnReload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(243)))), ((int)(((byte)(43)))));
+            this.btnReload.FlatAppearance.BorderSize = 0;
+            this.btnReload.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnReload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReload.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnReload.Image = ((System.Drawing.Image)(resources.GetObject("btnReload.Image")));
+            this.btnReload.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReload.Location = new System.Drawing.Point(1201, 112);
+            this.btnReload.Name = "btnReload";
+            this.btnReload.Size = new System.Drawing.Size(34, 35);
+            this.btnReload.TabIndex = 32;
+            this.btnReload.UseVisualStyleBackColor = false;
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
+            // 
             // Loan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -298,7 +336,6 @@ namespace Financiamientos.Forms
         private System.Windows.Forms.Button btnCreateNew;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbColumnName;
         private System.Windows.Forms.Button btnDetail;
@@ -310,5 +347,8 @@ namespace Financiamientos.Forms
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.DateTimePicker dtpFecha;
         private System.Windows.Forms.MaskedTextBox txtValue;
+        private System.Windows.Forms.ComboBox cmbFilters;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnReload;
     }
 }

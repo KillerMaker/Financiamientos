@@ -165,6 +165,7 @@ namespace Financiamientos.Forms
             this.btnOverdureLoan.TabIndex = 14;
             this.btnOverdureLoan.Text = "Ver Financiamientos Atrasados";
             this.btnOverdureLoan.UseVisualStyleBackColor = false;
+            this.btnOverdureLoan.Click += new System.EventHandler(this.btnOverdureLoan_Click);
             // 
             // panel7
             // 
@@ -208,6 +209,7 @@ namespace Financiamientos.Forms
             this.btnCanceledLoans.TabIndex = 13;
             this.btnCanceledLoans.Text = "Ver Financiamientos Cancel.";
             this.btnCanceledLoans.UseVisualStyleBackColor = false;
+            this.btnCanceledLoans.Click += new System.EventHandler(this.btnCanceledLoans_Click);
             // 
             // btnActiveLoans
             // 
@@ -224,6 +226,7 @@ namespace Financiamientos.Forms
             this.btnActiveLoans.TabIndex = 12;
             this.btnActiveLoans.Text = "Ver Financiamientos Activos";
             this.btnActiveLoans.UseVisualStyleBackColor = false;
+            this.btnActiveLoans.Click += new System.EventHandler(this.btnActiveLoans_Click);
             // 
             // btnPayedLoans
             // 
@@ -240,6 +243,7 @@ namespace Financiamientos.Forms
             this.btnPayedLoans.TabIndex = 11;
             this.btnPayedLoans.Text = "Ver Financiamientos Pagos";
             this.btnPayedLoans.UseVisualStyleBackColor = false;
+            this.btnPayedLoans.Click += new System.EventHandler(this.btnPayedLoans_Click);
             // 
             // label6
             // 

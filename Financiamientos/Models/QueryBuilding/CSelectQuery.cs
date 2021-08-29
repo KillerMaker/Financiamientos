@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Financiamientos.Utility;
 
@@ -107,6 +108,7 @@ namespace Financiamientos.Models.QueryBuilding
             string condition = "";
             SqlDbType type=SqlDbType.Int;
 
+
             foreach (CFilter filter in Filters)
             {
                 i++;
@@ -124,9 +126,10 @@ namespace Financiamientos.Models.QueryBuilding
                 param.Scale = (scale > 0) ? scale : (byte)0;
                 Parameters.Add(param);
 
-                yield return (filter.operators.HasValue)?
+                 yield return (filter.operators.HasValue)?
                     $"{column} {condition} @P{i} {operators} \n":
                     $"{column} {condition} @P{i} \n";
+
             }
         }
 
@@ -149,7 +152,7 @@ namespace Financiamientos.Models.QueryBuilding
 
             query += "WHERE ";
 
-            foreach (string filter in buildFilters())
+           foreach (string filter in buildFilters())
                 query += filter;
 
             if (Filters == null)

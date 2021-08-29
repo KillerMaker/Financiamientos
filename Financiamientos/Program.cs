@@ -1,3 +1,5 @@
+using Financiamientos.Forms;
+using Financiamientos.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +19,7 @@ namespace Financiamientos
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Test());
+            Application.Run(new Home(new CUser("Marcos Kelvin","12345678901","MKelvin","1234","Administrador","U-001")));
         }
     }
 }

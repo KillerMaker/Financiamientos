@@ -69,5 +69,29 @@ namespace Financiamientos.Forms
         {
 
         }
+
+        private void btnPayedLoans_Click(object sender, EventArgs e)
+        {
+            home.OpenForm(new Loan(home,"SELECT * FROM VISTA_PRESTAMO WHERE ESTADO ='PAGADO'"));
+            Dispose();
+        }
+
+        private void btnActiveLoans_Click(object sender, EventArgs e)
+        {
+            home.OpenForm(new Loan(home, "SELECT * FROM VISTA_PRESTAMO WHERE ESTADO ='ACTIVO'"));
+            Dispose();
+        }
+
+        private void btnCanceledLoans_Click(object sender, EventArgs e)
+        {
+            home.OpenForm(new Loan(home, "SELECT * FROM VISTA_PRESTAMO WHERE ESTADO ='CANCELADO'"));
+            Dispose();
+        }
+
+        private void btnOverdureLoan_Click(object sender, EventArgs e)
+        {
+            home.OpenForm(new Loan(home, "SELECT * FROM VISTA_PRESTAMO WHERE ESTADO ='ATRASADO'"));
+            Dispose();
+        }
     }
 }

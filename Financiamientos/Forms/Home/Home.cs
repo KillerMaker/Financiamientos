@@ -17,6 +17,7 @@ namespace Financiamientos.Forms
         public Home(CUser user)
         {
             this.user = user;
+            
             InitializeComponent();
         }
 
@@ -68,6 +69,7 @@ namespace Financiamientos.Forms
 
         private void Home_Load(object sender, EventArgs e)
         {
+            WindowState = FormWindowState.Maximized;
             OpenForm(new HomeDashboard(this));
         }
         public void OpenForm (Form frm)

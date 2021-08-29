@@ -1,10 +1,12 @@
 ﻿using Financiamientos.Models.Entities;
 using Financiamientos.Models.QueryBuilding;
+using Financiamientos.Utility;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -63,7 +65,7 @@ namespace Financiamientos.Forms
                 lblCustomer.Text = loanInfo.Rows[0].ItemArray[0].ToString();
                 lblUser.Text = loanInfo.Rows[0].ItemArray[1].ToString();
                 lblDate.Text = loanInfo.Rows[0].ItemArray[2].ToString();
-                lblAmmount.Text = loanInfo.Rows[0].ItemArray[3].ToString();
+                lblAmmount.Text = Convert.ToDouble(loanInfo.Rows[0].ItemArray[3]).ToString("c");
                 lblState.Text = loanInfo.Rows[0].ItemArray[4].ToString();
                 #endregion
 
@@ -76,9 +78,9 @@ namespace Financiamientos.Forms
 
                 if(paymentInfo.Rows.Count>0)
                 {
-                    lblPayedCapital.Text = paymentInfo.Rows[0].ItemArray[1].ToString();
-                    lblPayedInterest.Text = paymentInfo.Rows[0].ItemArray[2].ToString();
-                    lblPayedArrears.Text = paymentInfo.Rows[0].ItemArray[3].ToString();
+                    lblPayedCapital.Text = Convert.ToDouble(paymentInfo.Rows[0].ItemArray[1]).ToString("c");
+                    lblPayedInterest.Text = Convert.ToDouble(paymentInfo.Rows[0].ItemArray[2]).ToString("c");
+                    lblPayedArrears.Text = Convert.ToDouble(paymentInfo.Rows[0].ItemArray[3]).ToString("c");
                 }
                 else
                 {
@@ -95,7 +97,7 @@ namespace Financiamientos.Forms
                 dtgvInstallsments.DataSource = await IQueryExecutor.TableReturnerExecutor(
                     $"SELECT * FROM CUOTA WHERE CODIGO_PRESTAMO ='{loan.code}'");
 
-                lbltotalAmmountRemaning.Text = installsmentInfo.Rows[0].ItemArray[1].ToString();
+                 lbltotalAmmountRemaning.Text = Convert.ToDouble(installsmentInfo.Rows[0].ItemArray[1]).ToString("c");
                 lblArrears.Text = installsmentInfo.Rows[0].ItemArray[2].ToString();
                 #endregion
 
@@ -116,6 +118,16 @@ namespace Financiamientos.Forms
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
