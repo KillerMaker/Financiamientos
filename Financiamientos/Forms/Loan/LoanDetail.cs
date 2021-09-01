@@ -1,4 +1,6 @@
-﻿using Financiamientos.Models.Entities;
+﻿
+using Financiamientos.Models.Entities;
+using Financiamientos.Forms.Payment;
 using Financiamientos.Models.QueryBuilding;
 using Financiamientos.Utility;
 using System;
@@ -127,7 +129,19 @@ namespace Financiamientos.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            new Payment.Payment().Show();
         }
+        private decimal getSumOfValues(DataGridView dtgv, int rowNumber)
+        {
+            decimal value = 0;
+            foreach(DataGridViewRow row in dtgv.Rows)
+            {
+                value += Convert.ToDecimal(row.Cells[rowNumber].Value);
+            }
+
+            return value;
+        }
+
+
     }
 }

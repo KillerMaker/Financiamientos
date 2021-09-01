@@ -74,8 +74,7 @@ namespace Financiamientos.Forms
         }
         public void OpenForm (Form frm)
         {
-            if (ContentPanel.Controls.Count > 0)
-                ContentPanel.Controls.Clear();
+            ContentPanel.Controls.Clear();
 
             frm.TopLevel = false;
             frm.Dock = DockStyle.Fill;

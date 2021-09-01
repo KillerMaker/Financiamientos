@@ -58,7 +58,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnCancelLoan.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnCancelPayment.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         DAAACwwBP0AiyAAAAgRJREFUOE+d1EtIVVEUgOFjQQ96QJiVlAThwBAkil4kggkRNmkUDqxGCRpojWoS
@@ -73,22 +73,7 @@
         AABJRU5ErkJggg==
 </value>
   </data>
-  <data name="btnPayment.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DAAACwwBP0AiyAAAAgRJREFUOE+d1EtIVVEUgOFjQQ96QJiVlAThwBAkil4kggkRNmkUDqxGCRpojWoS
-        TiKKBuXIoomFWgQSFAqSWA2MIqxBaGZZKfSQIgSpCML6/8M5l/vQq7bg47L3Peyz91rr7CBLLMUxPMYv
-        TOIRDmMh5hWrcB9DqMNdXMNJjOAGfOGc4xKeYQM2YhAPsQ6b8B4nMKdYi2/YHY6CoAXuth++yKjCa3iS
-        WaMCA4gfvo12VGKNE4S79Ohbw9EscQDPsSIcBUERuvEZtU4Q6+GCu8JRlliGffiIAieIUzgCj37LCWIn
-        xrAHWYtzBuOYwnnkoBo/MAF379xN/MEXxLvOiMXoxRUcgg83wly6gC9YjYsYhScxv/63ABlhS3gMi+Iu
-        SmHrWPGvMIffYaNvhnEQVntROEoL8+LRzGMcK+F8PWzwbViOOCzcT1iklNiBZrxE2TwNw9RsQSI8qkd6
-        959MSR8S4YL7kYfj2I4l8KvJT2NzW0BzbYVzYToyFvQBP/6/8FaxD5/CHbyN+A0/gC+2sX32KGow7YLF
-        sLIWwd18QAPKI6fhRWEzX8ATFGLaBVtxNokXgc18PWnOnjNf55Lm1ImUBZtgUV6gDV3wQr0TjeUL/b0H
-        26sjGr/CG1jplOjBZZTAL8V8eRemh039CXvhs162V5ERLmiSY356My34G8nPRgsGwT+O1JJGxaE5EQAA
-        AABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="btnUpdate.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnPay.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         DAAACwwBP0AiyAAAAgRJREFUOE+d1EtIVVEUgOFjQQ96QJiVlAThwBAkil4kggkRNmkUDqxGCRpojWoS

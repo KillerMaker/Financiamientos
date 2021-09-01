@@ -66,9 +66,9 @@ namespace Financiamientos.Forms
             this.panel8 = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnSearch = new System.Windows.Forms.Button();
+            this.btnCancelLoan = new System.Windows.Forms.Button();
+            this.btnPayment = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvInstallsments)).BeginInit();
@@ -464,63 +464,63 @@ namespace Financiamientos.Forms
             // panel9
             // 
             this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel9.Controls.Add(this.button2);
-            this.panel9.Controls.Add(this.button1);
-            this.panel9.Controls.Add(this.btnSearch);
+            this.panel9.Controls.Add(this.btnCancelLoan);
+            this.panel9.Controls.Add(this.btnPayment);
+            this.panel9.Controls.Add(this.btnUpdate);
             this.panel9.Location = new System.Drawing.Point(86, 732);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(594, 92);
             this.panel9.TabIndex = 30;
             // 
-            // button2
+            // btnCancelLoan
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(243)))), ((int)(((byte)(43)))));
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(408, 33);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(163, 35);
-            this.button2.TabIndex = 33;
-            this.button2.Text = "Cancelar";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnCancelLoan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(243)))), ((int)(((byte)(43)))));
+            this.btnCancelLoan.FlatAppearance.BorderSize = 0;
+            this.btnCancelLoan.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnCancelLoan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelLoan.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnCancelLoan.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelLoan.Image")));
+            this.btnCancelLoan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCancelLoan.Location = new System.Drawing.Point(408, 33);
+            this.btnCancelLoan.Name = "btnCancelLoan";
+            this.btnCancelLoan.Size = new System.Drawing.Size(163, 35);
+            this.btnCancelLoan.TabIndex = 33;
+            this.btnCancelLoan.Text = "Cancelar";
+            this.btnCancelLoan.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // btnPayment
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(243)))), ((int)(((byte)(43)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(213, 33);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(163, 35);
-            this.button1.TabIndex = 32;
-            this.button1.Text = "Insertar Pago";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnPayment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(243)))), ((int)(((byte)(43)))));
+            this.btnPayment.FlatAppearance.BorderSize = 0;
+            this.btnPayment.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnPayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPayment.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnPayment.Image = ((System.Drawing.Image)(resources.GetObject("btnPayment.Image")));
+            this.btnPayment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPayment.Location = new System.Drawing.Point(213, 33);
+            this.btnPayment.Name = "btnPayment";
+            this.btnPayment.Size = new System.Drawing.Size(163, 35);
+            this.btnPayment.TabIndex = 32;
+            this.btnPayment.Text = "Insertar Pago";
+            this.btnPayment.UseVisualStyleBackColor = false;
+            this.btnPayment.Click += new System.EventHandler(this.button1_Click);
             // 
-            // btnSearch
+            // btnUpdate
             // 
-            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(243)))), ((int)(((byte)(43)))));
-            this.btnSearch.FlatAppearance.BorderSize = 0;
-            this.btnSearch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
-            this.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSearch.Location = new System.Drawing.Point(20, 33);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(163, 35);
-            this.btnSearch.TabIndex = 31;
-            this.btnSearch.Text = "Actualizar";
-            this.btnSearch.UseVisualStyleBackColor = false;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(243)))), ((int)(((byte)(43)))));
+            this.btnUpdate.FlatAppearance.BorderSize = 0;
+            this.btnUpdate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
+            this.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUpdate.Location = new System.Drawing.Point(20, 33);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(163, 35);
+            this.btnUpdate.TabIndex = 31;
+            this.btnUpdate.Text = "Actualizar";
+            this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // LoanDetail
             // 
@@ -592,9 +592,9 @@ namespace Financiamientos.Forms
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnCancelLoan;
+        private System.Windows.Forms.Button btnPayment;
+        private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Label lblPayedArrears;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label lblPayedInterest;
