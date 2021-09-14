@@ -39,7 +39,7 @@ namespace Financiamientos.Forms
 
         private async void Loan_Load(object sender, EventArgs e)
         {
-            dtgvLoans.DataSource = await IQueryExecutor.TableReturnerExecutor(query);
+            dtgvLoans.DataSource = await IQueryExecutor.ExecuteQuery(query);
         }
 
         private async void button1_Click(object sender, EventArgs e)
@@ -48,12 +48,10 @@ namespace Financiamientos.Forms
             {
                 if (dtpFecha.Visible.Equals(true))
                     //Busqueda para campos que no soportan Fecha
-                    dtgvLoans.DataSource = await IQueryExecutor.TableReturnerExecutor(
-                        $@"SELECT * FROM VISTA_PRESTAMO WHERE {columnName} {filter} '{dtpFecha.Value}'");
+                    dtgvLoans.DataSource = await IQueryExecutor.ExecuteQuery<CLoan>($"{columnName} {filter} '{dtpFecha.Value}'");
                 else
                     //Busqueda para campos que solo soportan Fecha
-                    dtgvLoans.DataSource = await IQueryExecutor.TableReturnerExecutor(
-                        $@"SELECT * FROM VISTA_PRESTAMO WHERE {columnName} {filter} '{likeChar}{txtValue.Text}{likeChar}'");
+                    dtgvLoans.DataSource = await IQueryExecutor.ExecuteQuery<CLoan>($"{columnName} {filter}'{likeChar}{txtValue.Text}{likeChar}'");
             }
             catch(Exception ex)
             {
@@ -208,7 +206,7 @@ namespace Financiamientos.Forms
         //Recarga los datos del Dtgv
         private async void btnReload_Click(object sender, EventArgs e)
         {
-            dtgvLoans.DataSource = await IQueryExecutor.TableReturnerExecutor("SELECT * FROM VISTA_PRESTAMO");
+            dtgvLoans.DataSource = await IQueryExecutor.ExecuteQuery("SELECT * FROM VISTA_PRESTAMO");
         }
     }
 }

@@ -36,9 +36,9 @@ namespace Financiamientos.Models.QueryBuilding
         }
         
         /// <summary>
-        /// Construye la cabecera (Campos que seran seleccionados) del query
+        /// Construye la cabecera (Campos que seran seleccionados) de la consulta
         /// </summary>
-        /// <returns>La cabecera del query</returns>
+        /// <returns>Un listado de strings con La cabecera de la consulta</returns>
         private IEnumerable<string>buildHeaders()
         {
             string columnName = "";
@@ -64,9 +64,9 @@ namespace Financiamientos.Models.QueryBuilding
         }
 
         /// <summary>
-        /// Construye la secuencia de joins del query
+        /// Construye la secuencia de joins de la consulta
         /// </summary>
-        /// <returns>La secuencia de joins del query</returns>
+        /// <returns>Un listado de strings con los joins de la consulta</returns>
         private IEnumerable<string> buildJoins()
         {
             string column1 = "";
@@ -94,9 +94,9 @@ namespace Financiamientos.Models.QueryBuilding
         }
 
         /// <summary>
-        /// Construye la secuencia de filtros WHERE del query
+        /// Construye la secuencia de filtros WHERE de la consulta
         /// </summary>
-        /// <returns>La secuencia de filtros WHERE del query</returns>
+        /// <returns>Un listado de strings con los filtros WHERE de la consulta</returns>
         private IEnumerable<string>buildFilters()
         {
             int lenght = 0;
@@ -134,9 +134,9 @@ namespace Financiamientos.Models.QueryBuilding
         }
 
         /// <summary>
-        /// Une todas las piezas para crear el query
+        /// Ejecuta la consulta
         /// </summary>
-        /// <returns>Un DataTable con los resultados del query anteriormente creado</returns>
+        /// <returns>Un Tabla con los resultados de la consulta</returns>
         public async Task<DataTable> Launch()
         {
             string query = "SELECT \n";
@@ -160,7 +160,7 @@ namespace Financiamientos.Models.QueryBuilding
             if (joins == null)
                 query = query.Replace("ON", "");
 
-            return await IQueryExecutor.TableReturnerExecutor(query.Replace("\n",""), Parameters.ToArray());
+            return await IQueryExecutor.ExecuteQuery(query.Replace("\n",""), Parameters.ToArray());
         }
     }
 }

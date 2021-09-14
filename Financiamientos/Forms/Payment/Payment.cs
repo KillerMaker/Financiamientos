@@ -12,8 +12,12 @@ namespace Financiamientos.Forms.Payment
 {
     public partial class Payment : Form
     {
-        public Payment()
+        public readonly string loanCode;
+        public readonly float totalDebtRemaning;
+        public Payment(string loanCode,float totalDebtRemaning)
         {
+            this.loanCode = loanCode;
+            this.totalDebtRemaning = totalDebtRemaning;
             InitializeComponent();
         }
 
@@ -25,7 +29,6 @@ namespace Financiamientos.Forms.Payment
         private void btnPay_Click(object sender, EventArgs e)
         {
             Close();
-            Dispose();
         }
 
         private void Payment_Load(object sender, EventArgs e)

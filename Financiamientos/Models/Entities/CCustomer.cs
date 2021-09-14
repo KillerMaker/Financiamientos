@@ -6,7 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using Financiamientos.Utility;
 using Financiamientos.Models.QueryBuilding;
-
+using System.Linq;
 
 namespace Financiamientos.Models.Entities
 {
@@ -18,7 +18,7 @@ namespace Financiamientos.Models.Entities
         public readonly string phone;
         public readonly string adress;
 
-        private readonly List<SqlParameter> Parameters;
+
 
         public CCustomer(string name,string idNumber,DateTime birthDate,string phone,string adress,string code=null):base(code)
         {
@@ -40,6 +40,20 @@ namespace Financiamientos.Models.Entities
             this.phone = phone.Replace("-","");
             this.adress = adress;
 
+            parameters = setParameters();
+
+            #endregion Setting Values
+        }
+
+        public async Task<int> Update()
+            => await IQueryExecutor.ExecuteQuery(new string[] {"EXEC ACTUALIZA_CLIENTE @CODIGO,@TELEFONO,@DIRECCION"}, parameters.ToArray());
+
+        public override async Task<int> Insert()
+            => await IQueryExecutor.ExecuteQuery(new string[] 
+            {@"EXEC INSERTA_CLIENTE @NOMBRE,@CEDULA,@FECHA_NACIMIENTO,@TELEFONO,@DIRECCION"},parameters.ToArray());
+
+        protected override IEnumerable<SqlParameter> setParameters()
+        {
             SqlParameter Name = new SqlParameter("@NOMBRE", SqlDbType.VarChar, 50);
             SqlParameter IdNumber = new SqlParameter("@CEDULA", SqlDbType.Char, 11);
             SqlParameter BirthDay = new SqlParameter("@FECHA_NACIMIENTO", SqlDbType.Date);
@@ -47,26 +61,16 @@ namespace Financiamientos.Models.Entities
             SqlParameter Adress = new SqlParameter("@DIRECCION", SqlDbType.VarChar, 200);
             SqlParameter Code = new SqlParameter(@"CODIGO", SqlDbType.Char, 7);
 
-            Name.Value = this.name;
-            IdNumber.Value = this.idNumber;
-            BirthDay.Value = this.birthDate;
-            Phone.Value = this.phone;
-            Adress.Value = this.adress;
-            Code.Value = this.code;
+            Name.Value = name;
+            IdNumber.Value = idNumber;
+            BirthDay.Value = birthDate;
+            Phone.Value = phone;
+            Adress.Value = adress;
+            Code.Value = code;
 
-            Parameters = (Code.Value != null) ?
+            return (Code.Value != null) ?
                 new List<SqlParameter>() { Code, Name, IdNumber, BirthDay, Phone, Adress } :
                 new List<SqlParameter>() { Name, IdNumber, BirthDay, Phone, Adress };
-
-            #endregion Setting Values
         }
-
-        public async Task<int> Update()
-            => await IQueryExecutor.IntReturnerExecutor(new string[] {"EXEC ACTUALIZA_CLIENTE @CODIGO,@TELEFONO,@DIRECCION"}, Parameters.ToArray());
-
-        public override async Task<int> Insert()
-            => await IQueryExecutor.IntReturnerExecutor(new string[] 
-            {@"EXEC INSERTA_CLIENTE @NOMBRE,@CEDULA,@FECHA_NACIMIENTO,@TELEFONO,@DIRECCION"},Parameters.ToArray());
-
     }
 }

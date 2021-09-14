@@ -22,8 +22,6 @@ namespace Financiamientos.Forms
         public readonly CLoan loan;
 
         private DataTable loanInfo;
-        private DataTable paymentInfo;
-        private DataTable installsmentInfo;
         public LoanDetail(Home home,CLoan loan)
         {
             this.home = home;
@@ -61,7 +59,7 @@ namespace Financiamientos.Forms
             try
             {
                 #region loan stuff
-                loanInfo = await IQueryExecutor.TableReturnerExecutor(
+                loanInfo = await IQueryExecutor.ExecuteQuery(
                     $"SELECT CLIENTE,VENDEDOR,[FECHA DE CREACION],[MONTO FINANCIADO],ESTADO FROM VISTA_PRESTAMO WHERE FINANCIAMIENTO ='{loan.code}'");
 
                 lblCustomer.Text = loanInfo.Rows[0].ItemArray[0].ToString();
@@ -72,17 +70,14 @@ namespace Financiamientos.Forms
                 #endregion
 
                 #region payment stuff
-                paymentInfo = await IQueryExecutor.TableReturnerExecutor(
-                    $"SELECT * FROM PAGO_INFO WHERE FINANCIAMIENTO = '{loan.code}'");
-
-                dtgvPayments.DataSource = await IQueryExecutor.TableReturnerExecutor(
+                dtgvPayments.DataSource = await IQueryExecutor.ExecuteQuery(
                     $"SELECT * FROM PAGO WHERE CODIGO_PRESTAMO ='{loan.code}'");
 
-                if(paymentInfo.Rows.Count>0)
+                if(dtgvPayments.Rows.Count>0)
                 {
-                    lblPayedCapital.Text = Convert.ToDouble(paymentInfo.Rows[0].ItemArray[1]).ToString("c");
-                    lblPayedInterest.Text = Convert.ToDouble(paymentInfo.Rows[0].ItemArray[2]).ToString("c");
-                    lblPayedArrears.Text = Convert.ToDouble(paymentInfo.Rows[0].ItemArray[3]).ToString("c");
+                    lblPayedCapital.Text = CLoan.GetpaidCapital((DataTable)dtgvPayments.DataSource).ToString("c");
+                    lblPayedInterest.Text = CLoan.GetpaidInterest((DataTable)dtgvPayments.DataSource).ToString("c");
+                    lblPayedArrears.Text = CLoan.GetpaidArrears((DataTable)dtgvPayments.DataSource).ToString("c");
                 }
                 else
                 {
@@ -93,20 +88,16 @@ namespace Financiamientos.Forms
                 #endregion
 
                 #region installsment stuff
-                installsmentInfo = await IQueryExecutor.TableReturnerExecutor(
-                    $"SELECT * FROM CUOTA_INFO WHERE FINANCIAMIENTO = '{loan.code}'");
 
-                dtgvInstallsments.DataSource = await IQueryExecutor.TableReturnerExecutor(
+                dtgvInstallsments.DataSource = await IQueryExecutor.ExecuteQuery(
                     $"SELECT * FROM CUOTA WHERE CODIGO_PRESTAMO ='{loan.code}'");
 
-                 lbltotalAmmountRemaning.Text = Convert.ToDouble(installsmentInfo.Rows[0].ItemArray[1]).ToString("c");
-                lblArrears.Text = installsmentInfo.Rows[0].ItemArray[2].ToString();
+                lbltotalAmmountRemaning.Text = CLoan.getTotalDebt((DataTable)dtgvInstallsments.DataSource).ToString("c");
+                lblArrears.Text = CLoan.getTotalAmmountOfArrears((DataTable)dtgvInstallsments.DataSource).ToString();
                 #endregion
 
                 #region disposing 
                 loanInfo.Dispose();
-                paymentInfo.Dispose();
-                installsmentInfo.Dispose();
                 #endregion
             }
             catch(Exception ex)
@@ -126,22 +117,11 @@ namespace Financiamientos.Forms
         {
 
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            new Payment.Payment().Show();
-        }
-        private decimal getSumOfValues(DataGridView dtgv, int rowNumber)
-        {
-            decimal value = 0;
-            foreach(DataGridViewRow row in dtgv.Rows)
-            {
-                value += Convert.ToDecimal(row.Cells[rowNumber].Value);
-            }
-
-            return value;
-        }
+        
+        private void button1_Click(object sender, EventArgs e)=>
+            new Payment.Payment(loan.code, CLoan.getTotalDebt((DataTable)dtgvInstallsments.DataSource)).Show();           
 
 
+      
     }
 }

@@ -227,11 +227,11 @@ namespace Financiamientos.Forms
             // lblCustomer
             // 
             this.lblCustomer.AutoSize = true;
-            this.lblCustomer.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblCustomer.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblCustomer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(182)))), ((int)(((byte)(217)))));
             this.lblCustomer.Location = new System.Drawing.Point(21, 84);
             this.lblCustomer.Name = "lblCustomer";
-            this.lblCustomer.Size = new System.Drawing.Size(176, 25);
+            this.lblCustomer.Size = new System.Drawing.Size(184, 25);
             this.lblCustomer.TabIndex = 3;
             this.lblCustomer.Text = "Nombre del Cliente";
             this.lblCustomer.Click += new System.EventHandler(this.label3_Click);
@@ -239,11 +239,11 @@ namespace Financiamientos.Forms
             // lblNameIndicator
             // 
             this.lblNameIndicator.AutoSize = true;
-            this.lblNameIndicator.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblNameIndicator.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblNameIndicator.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(182)))), ((int)(((byte)(217)))));
             this.lblNameIndicator.Location = new System.Drawing.Point(21, 19);
             this.lblNameIndicator.Name = "lblNameIndicator";
-            this.lblNameIndicator.Size = new System.Drawing.Size(111, 40);
+            this.lblNameIndicator.Size = new System.Drawing.Size(120, 40);
             this.lblNameIndicator.TabIndex = 2;
             this.lblNameIndicator.Text = "Cliente:";
             this.lblNameIndicator.Click += new System.EventHandler(this.lblPayedLoans_Click);

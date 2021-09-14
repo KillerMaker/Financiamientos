@@ -37,6 +37,15 @@ namespace Financiamientos.Models.Entities
             this.paidInInteres = paidInInteres;
             this.paidInCapital = paidInCapital;
 
+            parameters = setParameters();
+        }
+
+        public override async Task<int> Insert()
+            => await IQueryExecutor.ExecuteQuery
+            (new string[] {"EXEC INSERTA_PAGO @CODIGO_PRESTAMO,@MONTO,@FECHA,@METODO_PAGO"}, parameters.ToArray());
+
+        protected override IEnumerable<SqlParameter> setParameters()
+        {
             SqlParameter Code = new SqlParameter("@CODIGO", SqlDbType.Char, 14);
             SqlParameter Ammount = new SqlParameter("@MONTO", SqlDbType.Decimal, 24);
             Ammount.Scale = 24;
@@ -45,19 +54,15 @@ namespace Financiamientos.Models.Entities
             SqlParameter LoanCode = new SqlParameter("@CODIGO_PRESTAMO", SqlDbType.Char, 7);
             SqlParameter PaymentMethod = new SqlParameter("@METODO_PAGO", SqlDbType.VarChar, 50);
 
-            Code.Value = this.code;
-            Ammount.Value = this.ammount;
-            Date.Value = this.date;
-            LoanCode.Value = this.loanCode;
-            PaymentMethod.Value = this.paymentMethod;
+            Code.Value = code;
+            Ammount.Value = ammount;
+            Date.Value = date;
+            LoanCode.Value = loanCode;
+            PaymentMethod.Value = paymentMethod;
 
-            parameters = (Code.Value != null) ?
+            return (Code.Value != null) ?
                 new List<SqlParameter>() { Code, Ammount, Date, LoanCode, PaymentMethod } :
                 new List<SqlParameter>() { Ammount, Date, LoanCode, PaymentMethod };
         }
-
-        public override async Task<int> Insert()
-            => await IQueryExecutor.IntReturnerExecutor
-            (new string[] {"EXEC INSERTA_PAGO @CODIGO_PRESTAMO,@MONTO,@FECHA,@METODO_PAGO"}, parameters.ToArray());
     }
 }

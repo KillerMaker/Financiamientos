@@ -35,31 +35,13 @@ namespace Financiamientos.Models.Entities
             this.userType = userType;
             this.state = state;
 
-            SqlParameter Code = new SqlParameter("@CODIGO", SqlDbType.Char, 5);
-            SqlParameter Name = new SqlParameter("@NOMBRE", SqlDbType.VarChar, 50);
-            SqlParameter IdNumber = new SqlParameter("@CEDULA", SqlDbType.Char, 11);
-            SqlParameter UserName = new SqlParameter("@NOMBRE_USUARIO",SqlDbType.VarChar,50);
-            SqlParameter Password = new SqlParameter("@CLAVE", SqlDbType.VarChar, 50);
-            SqlParameter UserType = new SqlParameter("@TIPO_USUARIO", SqlDbType.VarChar, 50);
-            SqlParameter State = new SqlParameter("@ESTADO", SqlDbType.VarChar, 50);
-
-            Name.Value = this.name;
-            IdNumber.Value = this.idNumber;
-            UserName.Value = this.userName;
-            Password.Value = this.password;
-            UserType.Value = this.userType;
-            State.Value = this.state;
-            Code.Value=this.code;
-
-            parameters = (Code.Value != null) ?
-                new List<SqlParameter>() { Code, Name, IdNumber, UserName, Password, UserType, State } :
-                new List<SqlParameter>() { Name, IdNumber, UserName, Password, UserType, State };
+            parameters = setParameters();
 
             #endregion SettingValues
         }
 
         public override async Task<int> Insert() =>
-            await IQueryExecutor.IntReturnerExecutor(new string[] { @"EXEC INSERTA_USUARIO
+            await IQueryExecutor.ExecuteQuery(new string[] { @"EXEC INSERTA_USUARIO
                 @NOMBRE,@CEDULA,@NOMBRE_USUARIO,@CLAVE,@TIPO_USUARIO,@ESTADO"},parameters.ToArray());
 
         public async Task<int> Update(string newUsername,string newPassword)
@@ -70,13 +52,34 @@ namespace Financiamientos.Models.Entities
             NewUserName.Value = newUsername;
             NewPassword.Value = newPassword;
 
-            parameters.AddRange(new List<SqlParameter>() { NewUserName, NewPassword });
+            parameters.ToList().AddRange(new List<SqlParameter>() { NewUserName, NewPassword });
 
-            return await IQueryExecutor.IntReturnerExecutor(new string[] 
+            return await IQueryExecutor.ExecuteQuery(new string[] 
                 {"EXEC ACTUALIZA_USUARIO @NOMBRE_USUARIO,@CLAVE,@NEW_USERNAME,@NEW_PASSWORD"}
                 ,parameters.ToArray());
         }
 
+        protected override IEnumerable<SqlParameter> setParameters()
+        {
+            SqlParameter Code = new SqlParameter("@CODIGO", SqlDbType.Char, 5);
+            SqlParameter Name = new SqlParameter("@NOMBRE", SqlDbType.VarChar, 50);
+            SqlParameter IdNumber = new SqlParameter("@CEDULA", SqlDbType.Char, 11);
+            SqlParameter UserName = new SqlParameter("@NOMBRE_USUARIO", SqlDbType.VarChar, 50);
+            SqlParameter Password = new SqlParameter("@CLAVE", SqlDbType.VarChar, 50);
+            SqlParameter UserType = new SqlParameter("@TIPO_USUARIO", SqlDbType.VarChar, 50);
+            SqlParameter State = new SqlParameter("@ESTADO", SqlDbType.VarChar, 50);
 
+            Name.Value = name;
+            IdNumber.Value = idNumber;
+            UserName.Value = userName;
+            Password.Value = password;
+            UserType.Value = userType;
+            State.Value = state;
+            Code.Value = code;
+
+            return(Code.Value != null) ?
+                new List<SqlParameter>() { Code, Name, IdNumber, UserName, Password, UserType, State } :
+                new List<SqlParameter>() { Name, IdNumber, UserName, Password, UserType, State };
+        }
     }
 }

@@ -44,10 +44,10 @@ namespace Financiamientos.Forms
         {
             try
             {
-                installsmetsDueToToday =await IQueryExecutor.TableReturnerExecutor("SELECT * FROM VISTA_CUOTAS_VENCEN_HOY");
-                last10Paymets= await IQueryExecutor.TableReturnerExecutor("SELECT * FROM ULTIMOS_10_PAGOS");
-                arrears = await IQueryExecutor.TableReturnerExecutor("SELECT * FROM VISTA_CUOTAS_ATRASADAS");
-                DataTable loanInfo= await IQueryExecutor.TableReturnerExecutor("SELECT * FROM VISTA_PRESTAMO_INFO");
+                installsmetsDueToToday =await IQueryExecutor.ExecuteQuery("SELECT * FROM VISTA_CUOTAS_VENCEN_HOY");
+                last10Paymets= await IQueryExecutor.ExecuteQuery("SELECT * FROM ULTIMOS_10_PAGOS");
+                arrears = await IQueryExecutor.ExecuteQuery("SELECT * FROM VISTA_CUOTAS_ATRASADAS");
+                DataTable loanInfo= await IQueryExecutor.ExecuteQuery("SELECT * FROM VISTA_PRESTAMO_INFO");
 
                 lblPayedLoans.Text = loanInfo.Rows[0].ItemArray[0].ToString();
                 lblActiveLoans.Text = loanInfo.Rows[0].ItemArray[1].ToString();

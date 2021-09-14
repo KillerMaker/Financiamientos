@@ -108,9 +108,9 @@ namespace Financiamientos.Utility
                 return false;
             else
             {
-                TimeSpan EdadEnDias = DateTime.Now - date;
+                TimeSpan ageInDays = DateTime.Now - date;
 
-                if (EdadEnDias.TotalDays < 6570)
+                if (ageInDays.TotalDays < 6570)
                     return false;
                 else
                     return true;

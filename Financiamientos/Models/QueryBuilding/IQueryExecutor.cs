@@ -8,20 +8,20 @@ using System.Data.SqlClient;
 using System.Configuration;
 using Financiamientos.Utility;
 using System.Collections.Specialized;
+using Financiamientos.Models.Entities;
 
 namespace Financiamientos.Models.QueryBuilding
 {
     interface IQueryExecutor
     {
         /// <summary>
-        /// Funcion que ejecuta una serie de comandos sin espera de ningun resultado,
-        /// poniendolos todos en una transaccion
+        /// Funcion que ejecuta una consulta en SQL Server
         /// </summary>
         /// <param name="querys">Lista de comandos a ejecutar</param>
         /// <param name="parameters">Lista de parametros a tomar en cuenta, deben estar todos los parametros
         /// usados por los comandos pasados como parametro</param>
         /// <returns>La cantidad de filas afectadas por la secuencia de consultas a la base de datos</returns>
-        public async static Task<int> IntReturnerExecutor(string[] querys,SqlParameter[]parameters=null)
+        public async static Task<int> ExecuteQuery(string[] querys,SqlParameter[]parameters=null)
         {
             //Se obtiene el string de conexion mediante el archivo de configuracion xml
             string connectionString = ConfigurationManager.ConnectionStrings["ADM"].ConnectionString;
@@ -69,12 +69,12 @@ namespace Financiamientos.Models.QueryBuilding
         }
 
         /// <summary>
-        /// Funcion que ejecuta un comando que retorna valores en forma de tabla 
+        /// Funcion que ejecuta una consulta en SQL Server
         /// </summary>
         /// <param name="query">Comando SELECT a ejecutar</param>
         /// <param name="parameters">Listado de parametros del comando pasado como parametro</param>
         /// <returns>Una tabla con los valores devueltos por la consulta</returns>
-        public async static Task<DataTable> TableReturnerExecutor(string query,SqlParameter[] parameters=null)
+        public async static Task<DataTable> ExecuteQuery(string query,SqlParameter[] parameters=null)
         {
             //Se obtiene el string de conexion mediante el archivo de configuracion xml
             string connectionString = ConfigurationManager.ConnectionStrings["ADM"].ConnectionString;
@@ -136,5 +136,40 @@ namespace Financiamientos.Models.QueryBuilding
                 
             }
         }
+        /// <summary>
+        /// Funcion que ejecuta una consulta en SQL Server
+        /// </summary>
+        /// <param name="Headers">Litado de los campos que seran seleccionados por la consulta</param>
+        /// <param name="SelectedTable">Tabla principal de la consulta</param>
+        /// <param name="Filters">Listado de filtros WHERE de la consulta</param>
+        /// <param name="Joins">Listado de Joins de la consulta</param>
+        /// <returns>Una tabla con los valores devueltos por la consulta</returns>
+        public async static Task<DataTable> ExecuteQuery(IEnumerable<ColumnNames> Headers, Tables SelectedTable, IEnumerable<CFilter> Filters = null, IEnumerable<CJoin> Joins = null)
+           => await new CSelctQuery(Headers, SelectedTable, Filters, Joins).Launch();
+
+
+        /// <summary>
+        /// Funcion que ejecuta la consulta de seleccion de datos predeterminada para un Tipo
+        /// </summary>
+        /// <param name="filter">Filtro de busqueda para la consulta</param>
+        /// <typeparam name="T">Tipo de cual se hara la consulta</typeparam>
+        /// <returns>Una tabla con los valores devueltos por la consulta</returns>
+        public async static Task<DataTable> ExecuteQuery<T>(string filter=null) where T: CEntity
+        {
+            string whereFilter = (filter == null) ? null : $"WHERE {filter}";
+
+            if (typeof(T) == typeof(CCustomer))
+                return await ExecuteQuery($"SELECT * FROM VISTA_CLIENTE {whereFilter}");
+            else if (typeof(T) == typeof(CLoan))
+                return await ExecuteQuery($"SELECT * FROM VISTA_PRESTAMO {whereFilter}");
+            else if (typeof(T) == typeof(CPayment))
+                return await ExecuteQuery($"SELECT * FROM PAGO {whereFilter}");
+            else if (typeof(T) == typeof(CUser))
+                return await ExecuteQuery($"SELECT * FROM CUOTA {whereFilter}");
+            else
+                throw new Exception($"El tipo {typeof(T)} no es un tipo soportado por la funcion");
+        }
+            
+
     }
 }
