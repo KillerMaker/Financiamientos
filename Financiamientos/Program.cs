@@ -19,6 +19,7 @@ namespace Financiamientos
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
             Application.Run(new Home(new CUser("Marcos Kelvin","12345678901","MKelvin","1234","Administrador","Activo","U-001")));
         }
     }

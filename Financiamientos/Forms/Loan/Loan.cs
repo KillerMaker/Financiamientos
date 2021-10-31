@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using Financiamientos.Models.QueryBuilding;
 using System.Windows.Forms;
 using Financiamientos.Models.Entities;
+using Financiamientos.Models.Reports;
+using System.Configuration;
+using OfficeOpenXml.Style;
 
 namespace Financiamientos.Forms
 {
@@ -207,6 +210,31 @@ namespace Financiamientos.Forms
         private async void btnReload_Click(object sender, EventArgs e)
         {
             dtgvLoans.DataSource = await IQueryExecutor.ExecuteQuery("SELECT * FROM VISTA_PRESTAMO");
+        }
+
+        //Crea un reporte de lo que se encuenta en el Dtgv
+        private async void button5_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var settings = ConfigurationManager.AppSettings;
+
+                string path = settings["loan-reports-path"].ToString() + $@"\{home.user.name}-{DateTime.Now.ToString("yyy-MM-dd hh-mm-ss")}.xlsx";
+
+                using (ExcelReport report = new ExcelReport(path))
+                {
+                    ReportMetaData metaData = new ReportMetaData(home.user.name, DateTime.Now, "Prestamo", "una descripcion");
+                    
+                    await report.CreateAndSaveFile(metaData);
+                    await report.AddWorkSheet((DataTable)dtgvLoans.DataSource);
+
+                    MessageBox.Show($"El reporte se ha creado satisfactoriamente en la ruta \n:{path}");
+                }
+            }
+            catch (Exception a)
+            {
+                MessageBox.Show(a.Message,"Ha ocurrido un error al crear el reporte");
+            }
         }
     }
 }
