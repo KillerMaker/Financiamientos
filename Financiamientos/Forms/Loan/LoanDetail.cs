@@ -54,7 +54,33 @@ namespace Financiamientos.Forms
 
         }
 
-        private async void LoanDetail_Load(object sender, EventArgs e)
+        private async void LoanDetail_Load(object sender, EventArgs e) =>await ReloadFrom();
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+
+        }
+        
+        private void button1_Click(object sender, EventArgs e)
+        {
+           Payment.Payment payment= new Payment.Payment(
+                this,
+                loan.code,
+                CLoan.GetCapitalDebt((DataTable)dtgvInstallsments.DataSource),
+                CLoan.GetInterestDebt((DataTable)dtgvInstallsments.DataSource),
+                CLoan.GetArrearsDebt((DataTable)dtgvInstallsments.DataSource));
+
+            payment.Show();
+        }
+
+            
+        
+        public async Task ReloadFrom()
         {
             try
             {
@@ -73,7 +99,7 @@ namespace Financiamientos.Forms
                 dtgvPayments.DataSource = await IQueryExecutor.ExecuteQuery(
                     $"SELECT * FROM PAGO WHERE CODIGO_PRESTAMO ='{loan.code}'");
 
-                if(dtgvPayments.Rows.Count>0)
+                if (dtgvPayments.Rows.Count > 0)
                 {
                     lblPayedCapital.Text = CLoan.GetpaidCapital((DataTable)dtgvPayments.DataSource).ToString("c");
                     lblPayedInterest.Text = CLoan.GetpaidInterest((DataTable)dtgvPayments.DataSource).ToString("c");
@@ -100,28 +126,10 @@ namespace Financiamientos.Forms
                 loanInfo.Dispose();
                 #endregion
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Ha ocurrido un problema al momento de visualizar los datos");
             }
-
-
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-
-        }
-        
-        private void button1_Click(object sender, EventArgs e)=>
-            new Payment.Payment(loan.code, CLoan.getTotalDebt((DataTable)dtgvInstallsments.DataSource)).Show();           
-
-
-      
     }
 }

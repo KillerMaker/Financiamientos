@@ -51,13 +51,18 @@ namespace Financiamientos.Models.QueryBuilding
                 foreach (CJoin j in joins)
                     tables.Add(j.table1);
 
-                //Establece el nombre de las columnas con su respectivo alias
-                QueryObjectsSetter.setColumns(tables, header, ref columnName, ref alias);
+                foreach(var table in tables)
+                {
+                    //Establece el nombre de las columnas con su respectivo alias
+                    QueryObjectsSetter.setColumns(table, header, ref columnName, ref alias);
 
-                //En caso de ser la primera columna en el header no le agregara una ',' al principio de esa
-                yield return (header==ColumnNames.All)? "*":(isFirst)?
-                    $"{columnName} AS {alias}" :
-                    $",{columnName} AS {alias} \n"; 
+                    //En caso de ser la primera columna en el header no le agregara una ',' al principio de esa
+                    yield return (header == ColumnNames.All) ? "*" : (isFirst) ?
+                        $"{columnName} AS {alias}" :
+                        $",{columnName} AS {alias} \n";
+
+                    break;
+                }
 
                 isFirst = false;
             }
@@ -83,10 +88,10 @@ namespace Financiamientos.Models.QueryBuilding
                 condition = QueryObjectsSetter.setConditions(join.condition); //Asigna la condicion
 
                 //Establece el valor de la primera columna del Join y sus respectivas propiedades
-                QueryObjectsSetter.setColumns(new List<Tables>() { join.table1 }, join.column1, ref column1, ref alias);
+                QueryObjectsSetter.setColumns(join.table1, join.column1, ref column1, ref alias);
 
                 //Establece el valor de la segunda columna del Join y sus respectivas propiedades
-                QueryObjectsSetter.setColumns(new List<Tables> { join.table2 }, join.column2, ref column2, ref alias);
+                QueryObjectsSetter.setColumns(join.table2, join.column2, ref column2, ref alias);
 
                 //En caso de que el iterador join no contenga nada devolvera una cadena vacia
                 yield return (join != null) ? $"{Join} {table} ON {column1} {condition} {column2} \n" : "";
@@ -112,7 +117,7 @@ namespace Financiamientos.Models.QueryBuilding
             foreach (CFilter filter in Filters)
             {
                 i++;
-                QueryObjectsSetter.setColumns(new List<Tables> { filter.table }, filter.column,ref column,ref alias);
+                QueryObjectsSetter.setColumns(filter.table, filter.column,ref column,ref alias);
                 QueryObjectsSetter.setParametersProperties(filter.column, ref type, ref lenght, ref scale);
 
                 SqlParameter param = new SqlParameter($"@P{i}", type, lenght);
@@ -158,7 +163,7 @@ namespace Financiamientos.Models.QueryBuilding
             if (Filters == null)
                 query = query.Replace(" WHERE ", "");
             if (joins == null)
-                query = query.Replace("ON", "");
+                query = query.Replace(" ON ", "");
 
             return await IQueryExecutor.ExecuteQuery(query.Replace("\n",""), Parameters.ToArray());
         }

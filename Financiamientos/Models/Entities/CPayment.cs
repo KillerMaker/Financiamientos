@@ -22,7 +22,7 @@ namespace Financiamientos.Models.Entities
         public readonly decimal? paidInCapital;
 
 
-        public CPayment(decimal ammount,DateTime date,string loanCode,string paymentMethod,decimal? paidInArrears,decimal? paidInInteres, decimal? paidInCapital,string code=null):base(code)
+        public CPayment(decimal ammount,DateTime date,string loanCode,string paymentMethod,decimal? paidInArrears=null,decimal? paidInInteres=null, decimal? paidInCapital=null,string code=null):base(code)
         {
             if (ammount <= 0)
                 throw new Exception($"Monto dado menor o igual a '0' : {ammount}");
@@ -48,8 +48,8 @@ namespace Financiamientos.Models.Entities
         {
             SqlParameter Code = new SqlParameter("@CODIGO", SqlDbType.Char, 14);
             SqlParameter Ammount = new SqlParameter("@MONTO", SqlDbType.Decimal, 24);
-            Ammount.Scale = 24;
-            Ammount.Precision = 4;
+            Ammount.Scale = 4;
+            Ammount.Precision = 24;
             SqlParameter Date = new SqlParameter("@FECHA", SqlDbType.Date);
             SqlParameter LoanCode = new SqlParameter("@CODIGO_PRESTAMO", SqlDbType.Char, 7);
             SqlParameter PaymentMethod = new SqlParameter("@METODO_PAGO", SqlDbType.VarChar, 50);
@@ -64,5 +64,7 @@ namespace Financiamientos.Models.Entities
                 new List<SqlParameter>() { Code, Ammount, Date, LoanCode, PaymentMethod } :
                 new List<SqlParameter>() { Ammount, Date, LoanCode, PaymentMethod };
         }
+
+
     }
 }

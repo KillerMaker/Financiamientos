@@ -73,201 +73,198 @@ namespace Financiamientos.Models.QueryBuilding
     }
     public static class QueryObjectsSetter
     {
-        public static void setColumns(IEnumerable<Tables> tables, ColumnNames column, ref string ColumnName,ref string alias)
+        public static void setColumns(Tables table, ColumnNames column, ref string ColumnName,ref string alias)
         {
-            foreach(Tables table in tables)
+      
+            if (column == ColumnNames.All)
             {
-                if (column == ColumnNames.All)
+                ColumnName = "*";
+            }
+            else
+            {
+                switch (table)
                 {
-                    ColumnName = "*";
-                }
-                else
-                {
-                    switch (table)
-                    {
-                        case Tables.Customer:
-                            switch (column)
-                            {
-                                case ColumnNames.CustomerCode:
-                                    ColumnName = "CLI.CODIGO";
-                                    alias = "[Codigo Cliente]";
-                                    break;
-                                case ColumnNames.Name:
-                                    ColumnName = "CLI.NOMBRE";
-                                    alias = "[Nombre Cliente]";
-                                    break;
-                                case ColumnNames.IdNumber:
-                                    ColumnName = "CLI.CEDULA";
-                                    alias = "[Cedula Cliente]";
-                                    break;
-                                case ColumnNames.BirthDate:
-                                    ColumnName = "CLI.FECHA_NAC";
-                                    alias = "[Fecha Nac. Cliente]";
-                                    break;
-                                case ColumnNames.Phone:
-                                    ColumnName = "CLI.TELEFONO";
-                                    alias = "[Telefono Cliente]";
-                                    break;
-                                case ColumnNames.Adress:
-                                    ColumnName = "CLI.DIRECCION";
-                                    alias = "[Direccion Cliente]";
-                                    break;
+                    case Tables.Customer:
+                        switch (column)
+                        {
+                            case ColumnNames.CustomerCode:
+                                ColumnName = "CLI.CODIGO";
+                                alias = "[Codigo Cliente]";
+                                break;
+                            case ColumnNames.Name:
+                                ColumnName = "CLI.NOMBRE";
+                                alias = "[Nombre Cliente]";
+                                break;
+                            case ColumnNames.IdNumber:
+                                ColumnName = "CLI.CEDULA";
+                                alias = "[Cedula Cliente]";
+                                break;
+                            case ColumnNames.BirthDate:
+                                ColumnName = "CLI.FECHA_NAC";
+                                alias = "[Fecha Nac. Cliente]";
+                                break;
+                            case ColumnNames.Phone:
+                                ColumnName = "CLI.TELEFONO";
+                                alias = "[Telefono Cliente]";
+                                break;
+                            case ColumnNames.Adress:
+                                ColumnName = "CLI.DIRECCION";
+                                alias = "[Direccion Cliente]";
+                                break;
                                
 
-                            }
-                            break;
-                        case Tables.User:
-                            switch (column)
-                            {
-                                case ColumnNames.UserCode:
-                                    ColumnName = "USU.CODIGO";
-                                    alias = "[Codigo Usuario]";
-                                    break;
-                                case ColumnNames.Name:
-                                    ColumnName = "USU.NOMBRE";
-                                    alias = "[Nombre Usuario]";
-                                    break;
-                                case ColumnNames.IdNumber:
-                                    ColumnName = "USU.CEDULA";
-                                    alias = "[Cedula Usuario]";
-                                    break;
-                                case ColumnNames.UserName:
-                                    ColumnName = "USU.NOMBRE_USUARIO";
-                                    alias = "[UserName Usuario]";
-                                    break;
-                                case ColumnNames.Password:
-                                    ColumnName = "USU.CLAVE";
-                                    alias = "[Clave Usuario]";
-                                    break;
-                                case ColumnNames.UserType:
-                                    ColumnName = "USU.TIPO_USUARIO";
-                                    alias = "[Tipo de Usuario]";
-                                    break;
-                                case ColumnNames.State:
-                                    ColumnName = "ESTADO_USUARIO";
-                                    alias = "[Estado Usuario]";
-                                    break;
+                        }
+                        break;
+                    case Tables.User:
+                        switch (column)
+                        {
+                            case ColumnNames.UserCode:
+                                ColumnName = "USU.CODIGO";
+                                alias = "[Codigo Usuario]";
+                                break;
+                            case ColumnNames.Name:
+                                ColumnName = "USU.NOMBRE";
+                                alias = "[Nombre Usuario]";
+                                break;
+                            case ColumnNames.IdNumber:
+                                ColumnName = "USU.CEDULA";
+                                alias = "[Cedula Usuario]";
+                                break;
+                            case ColumnNames.UserName:
+                                ColumnName = "USU.NOMBRE_USUARIO";
+                                alias = "[UserName Usuario]";
+                                break;
+                            case ColumnNames.Password:
+                                ColumnName = "USU.CLAVE";
+                                alias = "[Clave Usuario]";
+                                break;
+                            case ColumnNames.UserType:
+                                ColumnName = "USU.TIPO_USUARIO";
+                                alias = "[Tipo de Usuario]";
+                                break;
+                            case ColumnNames.State:
+                                ColumnName = "ESTADO_USUARIO";
+                                alias = "[Estado Usuario]";
+                                break;
                                
-                            }
-                            break;
-                        case Tables.Payment:
-                            switch (column)
-                            {
-                                case ColumnNames.PaymentCode:
-                                    ColumnName = "PAG.CODIGO";
-                                    alias = "[Codigo Pago]";
-                                    break;
-                                case ColumnNames.Ammount:
-                                    ColumnName = "PAG.ABONO";
-                                    alias = "[Monto Pago]";
-                                    break;
-                                case ColumnNames.PaymentDate:
-                                    ColumnName = "PAG.FECHA";
-                                    alias = "[Fecha Pago]";
-                                    break;
-                                case ColumnNames.PaymentMethod:
-                                    ColumnName = "PAG.METODO_PAGO";
-                                    alias = "[Metodo de Pago]";
-                                    break;
-                                case ColumnNames.LoanCode:
-                                    ColumnName = "PAG.CODIGO_PRESTAMO";
-                                    alias = "[Codigo Prestamo]";
-                                    break;
-                                case ColumnNames.PaidInArrears:
-                                    ColumnName = "PAG.MORA_PAGADA";
-                                    alias = "[Mora Pagada]";
-                                    break;
-                                case ColumnNames.PaidInInterest:
-                                    ColumnName = "PAG.INTERES_PAGADO";
-                                    alias = "[Interes Pagado]";
-                                    break;
-                                case ColumnNames.PaidInCapital:
-                                    ColumnName = "PAG.CAPITAL_PAGADO";
-                                    alias = "[Capital Pagado]";
-                                    break;
+                        }
+                        break;
+                    case Tables.Payment:
+                        switch (column)
+                        {
+                            case ColumnNames.PaymentCode:
+                                ColumnName = "PAG.CODIGO";
+                                alias = "[Codigo Pago]";
+                                break;
+                            case ColumnNames.Ammount:
+                                ColumnName = "PAG.ABONO";
+                                alias = "[Monto Pago]";
+                                break;
+                            case ColumnNames.PaymentDate:
+                                ColumnName = "PAG.FECHA";
+                                alias = "[Fecha Pago]";
+                                break;
+                            case ColumnNames.PaymentMethod:
+                                ColumnName = "PAG.METODO_PAGO";
+                                alias = "[Metodo de Pago]";
+                                break;
+                            case ColumnNames.LoanCode:
+                                ColumnName = "PAG.CODIGO_PRESTAMO";
+                                alias = "[Codigo Prestamo]";
+                                break;
+                            case ColumnNames.PaidInArrears:
+                                ColumnName = "PAG.MORA_PAGADA";
+                                alias = "[Mora Pagada]";
+                                break;
+                            case ColumnNames.PaidInInterest:
+                                ColumnName = "PAG.INTERES_PAGADO";
+                                alias = "[Interes Pagado]";
+                                break;
+                            case ColumnNames.PaidInCapital:
+                                ColumnName = "PAG.CAPITAL_PAGADO";
+                                alias = "[Capital Pagado]";
+                                break;
                                
-                            }
-                            break;
-                        case Tables.Fee:
-                            switch (column)
-                            {
-                                case ColumnNames.FeeCode:
-                                    ColumnName = "CUO.CODIGO";
-                                    alias = "[Codigo Cuota]";
-                                    break;
-                                case ColumnNames.LoanCode:
-                                    ColumnName = "CUO.CODIGO_PRESTAMO";
-                                    alias = "[Codigo Prestamo]";
-                                    break;
-                                case ColumnNames.FeeDate:
-                                    ColumnName = "CUO.FECHA";
-                                    alias = "[Fecha Cuota]";
-                                    break;
-                                case ColumnNames.ArrearsNumber:
-                                    ColumnName = "CUO.NUMERO_MORA";
-                                    alias = "[Numero Mora]";
-                                    break;
-                                case ColumnNames.RemaningCapitalAmmount:
-                                    ColumnName = "CUO.MONTO_CAPITAL_RESTANTE";
-                                    alias = "[Monto Capital Restante]";
-                                    break;
-                                case ColumnNames.RemaningInteresAmmount:
-                                    ColumnName = "CUO.MONTO_INTERES_RESTANTE";
-                                    alias = "[Monto Interes Restante]";
-                                    break;
-                                case ColumnNames.RemaningArrearsAmmount:
-                                    ColumnName = "CUO.MONTO_MORA";
-                                    alias = "[Monto Mora Restante]";
-                                    break;
-                                case ColumnNames.State:
-                                    ColumnName = "CUO.ESTADO";
-                                    alias = "[Estado Cuota]";
-                                    break;
+                        }
+                        break;
+                    case Tables.Fee:
+                        switch (column)
+                        {
+                            case ColumnNames.FeeCode:
+                                ColumnName = "CUO.CODIGO";
+                                alias = "[Codigo Cuota]";
+                                break;
+                            case ColumnNames.LoanCode:
+                                ColumnName = "CUO.CODIGO_PRESTAMO";
+                                alias = "[Codigo Prestamo]";
+                                break;
+                            case ColumnNames.FeeDate:
+                                ColumnName = "CUO.FECHA";
+                                alias = "[Fecha Cuota]";
+                                break;
+                            case ColumnNames.ArrearsNumber:
+                                ColumnName = "CUO.NUMERO_MORA";
+                                alias = "[Numero Mora]";
+                                break;
+                            case ColumnNames.RemaningCapitalAmmount:
+                                ColumnName = "CUO.MONTO_CAPITAL_RESTANTE";
+                                alias = "[Monto Capital Restante]";
+                                break;
+                            case ColumnNames.RemaningInteresAmmount:
+                                ColumnName = "CUO.MONTO_INTERES_RESTANTE";
+                                alias = "[Monto Interes Restante]";
+                                break;
+                            case ColumnNames.RemaningArrearsAmmount:
+                                ColumnName = "CUO.MONTO_MORA";
+                                alias = "[Monto Mora Restante]";
+                                break;
+                            case ColumnNames.State:
+                                ColumnName = "CUO.ESTADO";
+                                alias = "[Estado Cuota]";
+                                break;
                                 
-                            }
-                            break;
-                        case Tables.Loan:
-                            switch (column)
-                            {
-                                case ColumnNames.LoanCode:
-                                    ColumnName = "PRE.CODIGO";
-                                    alias = "[Codigo Prestamo]";
-                                    break;
-                                case ColumnNames.CustomerCode:
-                                    ColumnName = "PRE.CODIGO_CLIENTE";
-                                    alias = "[Codigo Cliente]";
-                                    break;
-                                case ColumnNames.UserCode:
-                                    ColumnName = "PRE.CODIGO_USUARIO";
-                                    alias = "[Codigo Usuario]";
-                                    break;
-                                case ColumnNames.LoanDate:
-                                    ColumnName = "PRE.FECHA";
-                                    alias = "[Fecha Prestamo]";
-                                    break;
-                                case ColumnNames.CapitalAmmount:
-                                    ColumnName = "PRE.MONTO_CAPITAL";
-                                    alias = "[Monto Capital]";
-                                    break;
-                                case ColumnNames.InstallsmentNumber:
-                                    ColumnName = "PRE.NO_CUOTAS";
-                                    alias = "[Numero de Cuotas]";
-                                    break;
-                                case ColumnNames.State:
-                                    ColumnName = "PRE.ESTADO";
-                                    alias = "[Estado Prestamo]";
-                                    break;
-                                case ColumnNames.InterestRate:
-                                    ColumnName = "PRE.PORCIENTO_INTERES_MENSUAL";
-                                    alias = "[Tasa Interes]";
-                                    break;
+                        }
+                        break;
+                    case Tables.Loan:
+                        switch (column)
+                        {
+                            case ColumnNames.LoanCode:
+                                ColumnName = "PRE.CODIGO";
+                                alias = "[Codigo Prestamo]";
+                                break;
+                            case ColumnNames.CustomerCode:
+                                ColumnName = "PRE.CODIGO_CLIENTE";
+                                alias = "[Codigo Cliente]";
+                                break;
+                            case ColumnNames.UserCode:
+                                ColumnName = "PRE.CODIGO_USUARIO";
+                                alias = "[Codigo Usuario]";
+                                break;
+                            case ColumnNames.LoanDate:
+                                ColumnName = "PRE.FECHA";
+                                alias = "[Fecha Prestamo]";
+                                break;
+                            case ColumnNames.CapitalAmmount:
+                                ColumnName = "PRE.MONTO_CAPITAL";
+                                alias = "[Monto Capital]";
+                                break;
+                            case ColumnNames.InstallsmentNumber:
+                                ColumnName = "PRE.NO_CUOTAS";
+                                alias = "[Numero de Cuotas]";
+                                break;
+                            case ColumnNames.State:
+                                ColumnName = "PRE.ESTADO";
+                                alias = "[Estado Prestamo]";
+                                break;
+                            case ColumnNames.InterestRate:
+                                ColumnName = "PRE.PORCIENTO_INTERES_MENSUAL";
+                                alias = "[Tasa Interes]";
+                                break;
                                
-                            }
-                            break;
-                    }
+                        }
+                        break;
                 }
-            }
-                
+            }      
         }
         public static void setParametersProperties(ColumnNames column,ref SqlDbType type,ref int length,ref byte scale)
         {

@@ -44,7 +44,38 @@ namespace Financiamientos.Models.Entities
             => await IQueryExecutor.ExecuteQuery(new string[] 
             {"EXEC INSERTA_PRESTAMO @CODIGO_CLIENTE,@CODIGO_USUARIO,@FECHA,@MONTO_CAPITAL,@NO_CUOTAS,@TASA_INTERES,@ESTADO"},parameters.ToArray());
 
-       
+        protected override IEnumerable<SqlParameter> setParameters()
+        {
+            SqlParameter Code = new SqlParameter("@CODIGO", SqlDbType.Char, 7);
+            SqlParameter CustomerCode = new SqlParameter("@CODIGO_CLIENTE", SqlDbType.Char, 7);
+            SqlParameter UserCode = new SqlParameter("@CODIGO_USUARIO", SqlDbType.Char, 5);
+            SqlParameter Date = new SqlParameter("@FECHA", SqlDbType.DateTime);
+
+            SqlParameter CapitalAmmount = new SqlParameter("@MONTO_CAPITAL", SqlDbType.Decimal, 24);
+            CapitalAmmount.Scale = 4;
+            CapitalAmmount.Precision = 24;
+
+            SqlParameter InstallsmentNumber = new SqlParameter("@NO_CUOTAS", SqlDbType.Int);
+            SqlParameter State = new SqlParameter("@ESTADO", SqlDbType.VarChar, 50);
+
+            SqlParameter InterestRate = new SqlParameter("@TASA_INTERES", SqlDbType.Decimal, 14);
+            InterestRate.Scale = 4;
+            InterestRate.Precision = 14;
+
+            Code.Value = code;
+            CustomerCode.Value = customerCode;
+            UserCode.Value = userCode;
+            Date.Value = date;
+            CapitalAmmount.Value = capitalAmmount;
+            InstallsmentNumber.Value = installsmentNumber;
+            State.Value = state;
+            InterestRate.Value = interestRate;
+
+            return (Code.Value != null) ?
+                new List<SqlParameter>() { Code, CustomerCode, UserCode, Date, CapitalAmmount, InstallsmentNumber, State, InterestRate } :
+                 new List<SqlParameter>() { CustomerCode, UserCode, Date, CapitalAmmount, InstallsmentNumber, State, InterestRate };
+        }
+
         /// <summary>
         /// Obtiene la deuda total (capital + interes + mora)
         /// </summary>
@@ -116,36 +147,31 @@ namespace Financiamientos.Models.Entities
             return paidArrears.Sum();
         }
 
-        protected override IEnumerable<SqlParameter> setParameters()
+        public static float GetCapitalDebt(DataTable table)
         {
-            SqlParameter Code = new SqlParameter("@CODIGO", SqlDbType.Char, 7);
-            SqlParameter CustomerCode = new SqlParameter("@CODIGO_CLIENTE", SqlDbType.Char, 7);
-            SqlParameter UserCode = new SqlParameter("@CODIGO_USUARIO", SqlDbType.Char, 5);
-            SqlParameter Date = new SqlParameter("@FECHA", SqlDbType.DateTime);
+            var capitalDebt = from rows in table.AsEnumerable()
+                              where rows.Field<string>("Estado") == "Activa"
+                              select new { debt = float.Parse(rows.Field<string>(4)) }.debt;
 
-            SqlParameter CapitalAmmount = new SqlParameter("@MONTO_CAPITAL", SqlDbType.Decimal, 24);
-            CapitalAmmount.Scale = 4;
-            CapitalAmmount.Precision = 24;
+            return capitalDebt.Sum();
+        }
 
-            SqlParameter InstallsmentNumber = new SqlParameter("@NO_CUOTAS", SqlDbType.Int);
-            SqlParameter State = new SqlParameter("@ESTADO", SqlDbType.VarChar, 50);
+        public static float GetInterestDebt(DataTable table)
+        {
+            var capitalDebt = from rows in table.AsEnumerable()
+                              where rows.Field<string>("Estado") == "Activa"
+                              select new { debt = float.Parse(rows.Field<string>(5)) }.debt;
 
-            SqlParameter InterestRate = new SqlParameter("@TASA_INTERES", SqlDbType.Decimal, 14);
-            InterestRate.Scale = 4;
-            InterestRate.Precision = 14;
+            return capitalDebt.Sum();
+        }
 
-            Code.Value = code;
-            CustomerCode.Value = customerCode;
-            UserCode.Value = userCode;
-            Date.Value = date;
-            CapitalAmmount.Value = capitalAmmount;
-            InstallsmentNumber.Value = installsmentNumber;
-            State.Value = state;
-            InterestRate.Value = interestRate;
+        public static float GetArrearsDebt(DataTable table)
+        {
+            var capitalDebt = from rows in table.AsEnumerable()
+                              where rows.Field<string>("Estado") == "Activa"
+                              select new { debt = float.Parse(rows.Field<string>(6)) }.debt;
 
-            return (Code.Value != null) ?
-                new List<SqlParameter>() { Code, CustomerCode, UserCode, Date, CapitalAmmount, InstallsmentNumber, State, InterestRate } :
-                 new List<SqlParameter>() { CustomerCode, UserCode, Date, CapitalAmmount, InstallsmentNumber, State, InterestRate };
+            return capitalDebt.Sum();
         }
     }
 }

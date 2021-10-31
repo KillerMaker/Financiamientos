@@ -77,7 +77,7 @@ namespace Financiamientos.Forms
         {
             try
             {
-                CLoan loan = new CLoan
+                await new CLoan
                 (
                     txtCustomer.Text,
                     home.user.code,
@@ -86,9 +86,7 @@ namespace Financiamientos.Forms
                     int.Parse(nudInstallsmetNumber.Value.ToString()),
                     "Activo",
                     decimal.Parse(nudInterestRate.Value.ToString())
-                );
-
-                await loan.Insert();
+                ).Insert();
 
                 MessageBox.Show("Financiamiento Insertado Correctamente","Hecho");
             }

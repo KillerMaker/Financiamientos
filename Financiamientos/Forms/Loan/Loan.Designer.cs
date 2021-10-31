@@ -31,6 +31,7 @@ namespace Financiamientos.Forms
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Loan));
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnReload = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.btnCreateNew = new System.Windows.Forms.Button();
@@ -48,7 +49,6 @@ namespace Financiamientos.Forms
             this.dtgvLoans = new System.Windows.Forms.DataGridView();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label14 = new System.Windows.Forms.Label();
-            this.btnReload = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvLoans)).BeginInit();
@@ -70,6 +70,22 @@ namespace Financiamientos.Forms
             this.panel3.Size = new System.Drawing.Size(1263, 730);
             this.panel3.TabIndex = 19;
             // 
+            // btnReload
+            // 
+            this.btnReload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(243)))), ((int)(((byte)(43)))));
+            this.btnReload.FlatAppearance.BorderSize = 0;
+            this.btnReload.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnReload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReload.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnReload.Image = ((System.Drawing.Image)(resources.GetObject("btnReload.Image")));
+            this.btnReload.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReload.Location = new System.Drawing.Point(1201, 112);
+            this.btnReload.Name = "btnReload";
+            this.btnReload.Size = new System.Drawing.Size(34, 35);
+            this.btnReload.TabIndex = 32;
+            this.btnReload.UseVisualStyleBackColor = false;
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
+            // 
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(243)))), ((int)(((byte)(43)))));
@@ -89,11 +105,11 @@ namespace Financiamientos.Forms
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(182)))), ((int)(((byte)(217)))));
-            this.label3.Location = new System.Drawing.Point(14, 28);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label3.Location = new System.Drawing.Point(14, 23);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(134, 20);
+            this.label3.Size = new System.Drawing.Size(180, 25);
             this.label3.TabIndex = 26;
             this.label3.Text = "Barra de Busqueda";
             // 
@@ -134,6 +150,7 @@ namespace Financiamientos.Forms
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.ForeColor = System.Drawing.SystemColors.Highlight;
             this.label2.Location = new System.Drawing.Point(330, 18);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 20);
@@ -210,6 +227,7 @@ namespace Financiamientos.Forms
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.SystemColors.Highlight;
             this.label1.Location = new System.Drawing.Point(15, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 20);
@@ -253,11 +271,11 @@ namespace Financiamientos.Forms
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(182)))), ((int)(((byte)(217)))));
-            this.label10.Location = new System.Drawing.Point(14, 130);
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label10.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label10.Location = new System.Drawing.Point(14, 125);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(134, 20);
+            this.label10.Size = new System.Drawing.Size(179, 25);
             this.label10.TabIndex = 18;
             this.label10.Text = "Vista de Prestamos";
             // 
@@ -284,28 +302,12 @@ namespace Financiamientos.Forms
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label14.Location = new System.Drawing.Point(75, 51);
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label14.Location = new System.Drawing.Point(75, 44);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(99, 25);
+            this.label14.Size = new System.Drawing.Size(133, 32);
             this.label14.TabIndex = 17;
             this.label14.Text = "Prestamos";
-            // 
-            // btnReload
-            // 
-            this.btnReload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(243)))), ((int)(((byte)(43)))));
-            this.btnReload.FlatAppearance.BorderSize = 0;
-            this.btnReload.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.btnReload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReload.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnReload.Image = ((System.Drawing.Image)(resources.GetObject("btnReload.Image")));
-            this.btnReload.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReload.Location = new System.Drawing.Point(1201, 112);
-            this.btnReload.Name = "btnReload";
-            this.btnReload.Size = new System.Drawing.Size(34, 35);
-            this.btnReload.TabIndex = 32;
-            this.btnReload.UseVisualStyleBackColor = false;
-            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
             // Loan
             // 

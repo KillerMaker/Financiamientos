@@ -110,10 +110,10 @@ namespace Financiamientos.Forms
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(86, 36);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(337, 25);
+            this.label1.Size = new System.Drawing.Size(354, 25);
             this.label1.TabIndex = 22;
             this.label1.Text = "Informacion Basica del Financiamiento";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -140,7 +140,7 @@ namespace Financiamientos.Forms
             // 
             this.lblState.AutoSize = true;
             this.lblState.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(182)))), ((int)(((byte)(217)))));
+            this.lblState.ForeColor = System.Drawing.SystemColors.Highlight;
             this.lblState.Location = new System.Drawing.Point(971, 84);
             this.lblState.Name = "lblState";
             this.lblState.Size = new System.Drawing.Size(64, 25);
@@ -151,7 +151,7 @@ namespace Financiamientos.Forms
             // 
             this.lblAmmount.AutoSize = true;
             this.lblAmmount.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblAmmount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(182)))), ((int)(((byte)(217)))));
+            this.lblAmmount.ForeColor = System.Drawing.SystemColors.Highlight;
             this.lblAmmount.Location = new System.Drawing.Point(737, 84);
             this.lblAmmount.Name = "lblAmmount";
             this.lblAmmount.Size = new System.Drawing.Size(163, 25);
@@ -161,11 +161,11 @@ namespace Financiamientos.Forms
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(182)))), ((int)(((byte)(217)))));
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label9.ForeColor = System.Drawing.Color.Black;
             this.label9.Location = new System.Drawing.Point(971, 19);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(109, 40);
+            this.label9.Size = new System.Drawing.Size(116, 40);
             this.label9.TabIndex = 25;
             this.label9.Text = "Estado:";
             // 
@@ -173,7 +173,7 @@ namespace Financiamientos.Forms
             // 
             this.lblDate.AutoSize = true;
             this.lblDate.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(182)))), ((int)(((byte)(217)))));
+            this.lblDate.ForeColor = System.Drawing.SystemColors.Highlight;
             this.lblDate.Location = new System.Drawing.Point(496, 84);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(188, 25);
@@ -183,11 +183,11 @@ namespace Financiamientos.Forms
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(182)))), ((int)(((byte)(217)))));
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label7.ForeColor = System.Drawing.Color.Black;
             this.label7.Location = new System.Drawing.Point(737, 19);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(109, 40);
+            this.label7.Size = new System.Drawing.Size(118, 40);
             this.label7.TabIndex = 25;
             this.label7.Text = "Monto:";
             // 
@@ -195,7 +195,7 @@ namespace Financiamientos.Forms
             // 
             this.lblUser.AutoSize = true;
             this.lblUser.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(182)))), ((int)(((byte)(217)))));
+            this.lblUser.ForeColor = System.Drawing.SystemColors.Highlight;
             this.lblUser.Location = new System.Drawing.Point(265, 84);
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(199, 25);
@@ -205,33 +205,33 @@ namespace Financiamientos.Forms
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(182)))), ((int)(((byte)(217)))));
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.ForeColor = System.Drawing.Color.Black;
             this.label5.Location = new System.Drawing.Point(513, 19);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(96, 40);
+            this.label5.Size = new System.Drawing.Size(103, 40);
             this.label5.TabIndex = 25;
             this.label5.Text = "Fecha:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(182)))), ((int)(((byte)(217)))));
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(265, 19);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(146, 40);
+            this.label3.Size = new System.Drawing.Size(159, 40);
             this.label3.TabIndex = 4;
             this.label3.Text = "Vendedor:";
             // 
             // lblCustomer
             // 
             this.lblCustomer.AutoSize = true;
-            this.lblCustomer.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblCustomer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(182)))), ((int)(((byte)(217)))));
+            this.lblCustomer.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblCustomer.ForeColor = System.Drawing.SystemColors.Highlight;
             this.lblCustomer.Location = new System.Drawing.Point(21, 84);
             this.lblCustomer.Name = "lblCustomer";
-            this.lblCustomer.Size = new System.Drawing.Size(184, 25);
+            this.lblCustomer.Size = new System.Drawing.Size(176, 25);
             this.lblCustomer.TabIndex = 3;
             this.lblCustomer.Text = "Nombre del Cliente";
             this.lblCustomer.Click += new System.EventHandler(this.label3_Click);
@@ -240,7 +240,7 @@ namespace Financiamientos.Forms
             // 
             this.lblNameIndicator.AutoSize = true;
             this.lblNameIndicator.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblNameIndicator.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(182)))), ((int)(((byte)(217)))));
+            this.lblNameIndicator.ForeColor = System.Drawing.Color.Black;
             this.lblNameIndicator.Location = new System.Drawing.Point(21, 19);
             this.lblNameIndicator.Name = "lblNameIndicator";
             this.lblNameIndicator.Size = new System.Drawing.Size(120, 40);
@@ -260,10 +260,10 @@ namespace Financiamientos.Forms
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.Location = new System.Drawing.Point(86, 241);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(235, 25);
+            this.label2.Size = new System.Drawing.Size(246, 25);
             this.label2.TabIndex = 24;
             this.label2.Text = "Cuotas del Financiamiento";
             // 
@@ -279,10 +279,10 @@ namespace Financiamientos.Forms
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label4.Location = new System.Drawing.Point(707, 241);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(227, 25);
+            this.label4.Size = new System.Drawing.Size(239, 25);
             this.label4.TabIndex = 26;
             this.label4.Text = "Pagos del Financiamiento";
             // 
@@ -303,7 +303,7 @@ namespace Financiamientos.Forms
             // 
             this.lblArrears.AutoSize = true;
             this.lblArrears.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblArrears.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(182)))), ((int)(((byte)(217)))));
+            this.lblArrears.ForeColor = System.Drawing.SystemColors.Highlight;
             this.lblArrears.Location = new System.Drawing.Point(442, 308);
             this.lblArrears.Name = "lblArrears";
             this.lblArrears.Size = new System.Drawing.Size(42, 25);
@@ -313,11 +313,11 @@ namespace Financiamientos.Forms
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(182)))), ((int)(((byte)(217)))));
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label11.ForeColor = System.Drawing.Color.Black;
             this.label11.Location = new System.Drawing.Point(346, 302);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(85, 32);
+            this.label11.Size = new System.Drawing.Size(80, 30);
             this.label11.TabIndex = 29;
             this.label11.Text = "Moras:";
             // 
@@ -325,7 +325,7 @@ namespace Financiamientos.Forms
             // 
             this.lbltotalAmmountRemaning.AutoSize = true;
             this.lbltotalAmmountRemaning.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbltotalAmmountRemaning.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(182)))), ((int)(((byte)(217)))));
+            this.lbltotalAmmountRemaning.ForeColor = System.Drawing.SystemColors.Highlight;
             this.lbltotalAmmountRemaning.Location = new System.Drawing.Point(136, 309);
             this.lbltotalAmmountRemaning.Name = "lbltotalAmmountRemaning";
             this.lbltotalAmmountRemaning.Size = new System.Drawing.Size(163, 25);
@@ -344,11 +344,11 @@ namespace Financiamientos.Forms
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(182)))), ((int)(((byte)(217)))));
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label8.ForeColor = System.Drawing.Color.Black;
             this.label8.Location = new System.Drawing.Point(20, 302);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(110, 32);
+            this.label8.Size = new System.Drawing.Size(103, 30);
             this.label8.TabIndex = 27;
             this.label8.Text = "Restante:";
             // 
@@ -371,7 +371,7 @@ namespace Financiamientos.Forms
             // 
             this.lblPayedArrears.AutoSize = true;
             this.lblPayedArrears.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblPayedArrears.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(182)))), ((int)(((byte)(217)))));
+            this.lblPayedArrears.ForeColor = System.Drawing.SystemColors.Highlight;
             this.lblPayedArrears.Location = new System.Drawing.Point(414, 453);
             this.lblPayedArrears.Name = "lblPayedArrears";
             this.lblPayedArrears.Size = new System.Drawing.Size(163, 25);
@@ -381,11 +381,11 @@ namespace Financiamientos.Forms
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(182)))), ((int)(((byte)(217)))));
+            this.label19.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label19.ForeColor = System.Drawing.Color.Black;
             this.label19.Location = new System.Drawing.Point(414, 409);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(141, 30);
+            this.label19.Size = new System.Drawing.Size(148, 30);
             this.label19.TabIndex = 35;
             this.label19.Text = "Mora Pagada:";
             // 
@@ -393,7 +393,7 @@ namespace Financiamientos.Forms
             // 
             this.lblPayedInterest.AutoSize = true;
             this.lblPayedInterest.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblPayedInterest.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(182)))), ((int)(((byte)(217)))));
+            this.lblPayedInterest.ForeColor = System.Drawing.SystemColors.Highlight;
             this.lblPayedInterest.Location = new System.Drawing.Point(218, 453);
             this.lblPayedInterest.Name = "lblPayedInterest";
             this.lblPayedInterest.Size = new System.Drawing.Size(163, 25);
@@ -403,11 +403,11 @@ namespace Financiamientos.Forms
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(182)))), ((int)(((byte)(217)))));
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label17.ForeColor = System.Drawing.Color.Black;
             this.label17.Location = new System.Drawing.Point(218, 409);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(156, 30);
+            this.label17.Size = new System.Drawing.Size(165, 30);
             this.label17.TabIndex = 33;
             this.label17.Text = "Interes Pagado:";
             // 
@@ -415,7 +415,7 @@ namespace Financiamientos.Forms
             // 
             this.lblPayedCapital.AutoSize = true;
             this.lblPayedCapital.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblPayedCapital.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(182)))), ((int)(((byte)(217)))));
+            this.lblPayedCapital.ForeColor = System.Drawing.SystemColors.Highlight;
             this.lblPayedCapital.Location = new System.Drawing.Point(33, 453);
             this.lblPayedCapital.Name = "lblPayedCapital";
             this.lblPayedCapital.Size = new System.Drawing.Size(163, 25);
@@ -434,11 +434,11 @@ namespace Financiamientos.Forms
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(182)))), ((int)(((byte)(217)))));
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label13.ForeColor = System.Drawing.Color.Black;
             this.label13.Location = new System.Drawing.Point(33, 409);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(157, 30);
+            this.label13.Size = new System.Drawing.Size(166, 30);
             this.label13.TabIndex = 31;
             this.label13.Text = "Capital Pagado:";
             // 
@@ -454,10 +454,10 @@ namespace Financiamientos.Forms
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label15.Location = new System.Drawing.Point(86, 688);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(92, 25);
+            this.label15.Size = new System.Drawing.Size(95, 25);
             this.label15.TabIndex = 26;
             this.label15.Text = "Acciones ";
             // 
@@ -526,7 +526,7 @@ namespace Financiamientos.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1384, 895);
+            this.ClientSize = new System.Drawing.Size(1384, 790);
             this.Controls.Add(this.panel9);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel7);
