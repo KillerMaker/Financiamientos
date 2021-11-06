@@ -40,6 +40,7 @@ namespace Financiamientos.Models.Reports
 
             if (setStyles is not null)
                 setStyles(workSheet, range);
+      
             else
                 AddDefaultStyle(workSheet, range);
 
