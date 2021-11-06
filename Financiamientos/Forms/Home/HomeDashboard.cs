@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Financiamientos.Models.Interfaces;
 using Financiamientos.Models.QueryBuilding;
+using Financiamientos.Models.Reports;
 
 namespace Financiamientos.Forms
 {
-    public partial class HomeDashboard : Form
+    public partial class HomeDashboard : Form,IReportable<DataTable,ExcelReport>
     {
         private readonly Home home;
 
@@ -65,9 +68,22 @@ namespace Financiamientos.Forms
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private async void button3_Click(object sender, EventArgs e)
         {
+            try
+            {
+                using (ExcelReport report = new ExcelReport(new ReportMetaData(home.user.name, DateTime.Now, "Dashboard", "Descripcion"),
+                    ConfigurationManager.AppSettings["loan-reports-path"].ToString()))
+                {
+                    await Export(report);
 
+                    MessageBox.Show($@"El reporte se ha creado satisfactoriamente por el usuario {report.metaData.creatorName} {Environment.NewLine} en la ruta \n:{report.path}");
+                }
+            }
+            catch (Exception a)
+            {
+                MessageBox.Show(a.Message, "Ha ocurrido un error al crear el reporte");
+            }
         }
 
         private void btnPayedLoans_Click(object sender, EventArgs e)
@@ -92,6 +108,20 @@ namespace Financiamientos.Forms
         {
             home.OpenForm(new Loan(home, "SELECT * FROM VISTA_PRESTAMO WHERE ESTADO ='ATRASADO'"));
             Dispose();
+        }
+
+
+        public IEnumerable<DataTable> GetDataSources()
+        {
+            yield return (DataTable)dtgvArrears.DataSource;
+            yield return (DataTable)dtgvInstallsmetDueToday.DataSource;
+            yield return (DataTable)dtgvLast10Paymets.DataSource;
+        }
+
+        public async Task Export(ExcelReport report)
+        {
+            await report.CreateAndSaveFile();
+            await report.AddWorkSheet(GetDataSources());
         }
     }
 }

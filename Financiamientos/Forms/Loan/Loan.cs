@@ -12,10 +12,12 @@ using Financiamientos.Models.Entities;
 using Financiamientos.Models.Reports;
 using System.Configuration;
 using OfficeOpenXml.Style;
+using System.Threading;
+using Financiamientos.Models.Interfaces;
 
 namespace Financiamientos.Forms
 {
-    public partial class Loan : Form
+    public partial class Loan : Form,IReportable<DataTable,ExcelReport>
     {
         private string columnName;
         private string likeChar;
@@ -215,26 +217,31 @@ namespace Financiamientos.Forms
         //Crea un reporte de lo que se encuenta en el Dtgv
         private async void button5_Click(object sender, EventArgs e)
         {
-            try
-            {
-                var settings = ConfigurationManager.AppSettings;
-
-                string path = settings["loan-reports-path"].ToString() + $@"\{home.user.name}-{DateTime.Now.ToString("yyy-MM-dd hh-mm-ss")}.xlsx";
-
-                using (ExcelReport report = new ExcelReport(path))
+             try
+             {
+                using (ExcelReport report = new ExcelReport(new ReportMetaData(home.user.name,DateTime.Now,"Prestamo","Descripcion"),
+                    ConfigurationManager.AppSettings["loan-reports-path"].ToString()))
                 {
-                    ReportMetaData metaData = new ReportMetaData(home.user.name, DateTime.Now, "Prestamo", "una descripcion");
-                    
-                    await report.CreateAndSaveFile(metaData);
-                    await report.AddWorkSheet((DataTable)dtgvLoans.DataSource);
+                    await Export(report);
 
-                    MessageBox.Show($"El reporte se ha creado satisfactoriamente en la ruta \n:{path}");
+                    MessageBox.Show($@"El reporte se ha creado satisfactoriamente por el usuario {report.metaData.creatorName} {Environment.NewLine} en la ruta \n:{report.path}");
                 }
-            }
-            catch (Exception a)
-            {
-                MessageBox.Show(a.Message,"Ha ocurrido un error al crear el reporte");
-            }
+             }
+             catch (Exception a)
+             {
+                MessageBox.Show(a.Message, "Ha ocurrido un error al crear el reporte");
+             }
+        }
+
+        public IEnumerable<DataTable> GetDataSources()
+        {
+            yield return (DataTable)dtgvLoans.DataSource;
+        }
+
+        public async Task Export(ExcelReport report)
+        {
+            await report.CreateAndSaveFile();
+            await report.AddWorkSheet(GetDataSources());
         }
     }
 }

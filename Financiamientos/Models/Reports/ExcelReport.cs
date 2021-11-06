@@ -3,26 +3,24 @@ using System.Threading.Tasks;
 using System.IO;
 using OfficeOpenXml;
 using System.Data;
-using OfficeOpenXml.Style;
 using System.Drawing;
 using System;
-using System.Configuration;
+using System.Collections.Generic;
 
 namespace Financiamientos.Models.Reports
 {
-    class ExcelReport:IDisposable
+    public class ExcelReport:Report
     {
-        private readonly FileInfo file;
+        private FileInfo file;
         private ExcelPackage package;
 
-        public ExcelReport(string fileLocation)
+        public ExcelReport(ReportMetaData metaData,string path=null):base(metaData,path)
         {
-            file = new FileInfo(fileLocation);
-
-            ExcelPackage.LicenseContext = LicenseContext.Commercial;
+            file = new FileInfo(this.path + $@"\{this.metaData.creatorName}-{DateTime.Now.ToString("yyy-MM-dd hh-mm-ss")}.xlsx");
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
         }
 
-        public async Task CreateAndSaveFile(ReportMetaData metaData=null,Action<ExcelWorksheet, ExcelRangeBase> setStyles=null)
+        public async Task CreateAndSaveFile(Action<ExcelWorksheet, ExcelRangeBase> setStyles=null)
         {
             if (file.Exists)
                 throw new Exception($"Ya se encuentra un archivo con el nombre {file.Name} en la ruta {file.FullName}");
@@ -30,14 +28,14 @@ namespace Financiamientos.Models.Reports
             package = new ExcelPackage(file);
 
             if (metaData is not null)
-                AddMetaDataWorkSheet(metaData, setStyles);
+                AddMetaDataWorkSheet(setStyles);
 
             await package.SaveAsAsync(file);
         }
 
-        public async Task AddWorkSheet(DataTable table, Action<ExcelWorksheet, ExcelRangeBase> setStyles = null)
+        public async Task AddWorkSheet(DataTable table, string workSheetName="Hoja Principal", Action<ExcelWorksheet, ExcelRangeBase> setStyles = null)
         {
-            var workSheet = package.Workbook.Worksheets.Add("Hoja Principal");
+            var workSheet = package.Workbook.Worksheets.Add(workSheetName);
             var range = workSheet.Cells["A2"].LoadFromDataTable(table, true);
 
             if (setStyles is not null)
@@ -50,7 +48,17 @@ namespace Financiamientos.Models.Reports
             await package.SaveAsAsync(file);
         }
 
-        private void AddMetaDataWorkSheet(ReportMetaData metaData, Action<ExcelWorksheet, ExcelRangeBase> setStyles = null)
+        public async Task AddWorkSheet(IEnumerable<DataTable>tables,Action<ExcelWorksheet, ExcelRangeBase> setStyles = null)
+        {
+            int i = 0;
+            foreach(var table in tables)
+            {
+                if(table.Rows.Count>1)
+                    await AddWorkSheet(table, $"Hoja {i++}", setStyles);
+                continue;
+            }
+        }
+        private void AddMetaDataWorkSheet(Action<ExcelWorksheet, ExcelRangeBase> setStyles = null)
         {
             var workSheet = package.Workbook.Worksheets.Add("Hoja de Cabecera");
 
@@ -70,13 +78,10 @@ namespace Financiamientos.Models.Reports
                 setStyles(workSheet, null);
 
             workSheet.Cells["A2:B5"].AutoFitColumns();
-
         }
 
         private void AddDefaultStyle(ExcelWorksheet ws, ExcelRangeBase rb)
         {
-            var settings = ConfigurationManager.AppSettings;
-
             //Titulo
             ws.Cells["A1"].Value = $"Reporte";
             ws.Cells["A1:Z1"].Merge = true;
@@ -88,6 +93,12 @@ namespace Financiamientos.Models.Reports
             ws.Row(2).Style.Font.Size = int.Parse(settings["default-report-header-font-size"].ToString());
         }
 
-        public void Dispose() => package.Dispose();
+        public override void Dispose()
+        {
+            base.Dispose();
+
+            package.Dispose();
+            file = default;
+        }
     }
 }

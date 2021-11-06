@@ -40,9 +40,12 @@ namespace Financiamientos.Forms.Payment
             try
             {
                 await new CPayment(Convert.ToDecimal(mtxtAmmount.Text), DateTime.Now, loanCode, cmbPaymentMethod.Text).Insert();
-                await loanDetail.ReloadFrom();
-                Close();
+         
                 MessageBox.Show($"Se han pagado {mtxtAmmount.Text} al prestamo de codigo {loanCode}", "Pago realizado correctamente");
+                Close();
+
+                await loanDetail.ReloadFrom();
+
             }
             catch(Exception ex)
             {
@@ -55,11 +58,6 @@ namespace Financiamientos.Forms.Payment
             lblPayedCapital.Text = capital.ToString("c");
             lblPayedInterest.Text = interest.ToString("c");
             lblPayedArrears.Text = arrears.ToString("c");
-        }
-
-        private void panel4_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

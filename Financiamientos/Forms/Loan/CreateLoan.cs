@@ -70,7 +70,8 @@ namespace Financiamientos.Forms
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-             txtCustomer.Text =(dataGridView1.SelectedRows.Count>0)? dataGridView1.SelectedRows[0].Cells[0].Value.ToString():"";
+             txtCustomer.Text =(dataGridView1.SelectedRows.Count>0)? 
+                dataGridView1.SelectedRows[0].Cells[0].Value.ToString():"";
         }
 
         private async void btnCreate_Click(object sender, EventArgs e)
@@ -89,6 +90,9 @@ namespace Financiamientos.Forms
                 ).Insert();
 
                 MessageBox.Show("Financiamiento Insertado Correctamente","Hecho");
+
+                home.OpenForm(new Loan(home));
+                Dispose();
             }
             catch(Exception ex)
             {

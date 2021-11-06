@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -123,5 +124,79 @@ namespace Financiamientos.Utility
         /// <returns>True de ser valido, False de no serlo</returns>
         public static bool isValidPhone(this string s) => (s.Length.Equals(10)) ? true : false;
 
+        /// <summary>
+        /// Funcion que retorna la suma de todos los elementos de n numero de columnas
+        /// </summary>
+        /// <param name="table">Tabla de donde vienen los datos</param>
+        /// <param name="columnToFilter">Nombre de la columna donde se hara el filtro where</param>
+        /// <param name="valueToFilter">Valor de la columna donde se hara el filtro where</param>
+        /// <param name="columns">Indice de las columnas a sumar</param>
+        /// <returns></returns>
+        public static float GetTotalMultipleColumnSum(this DataTable table, string columnToFilter, string valueToFilter, params int[] columns)
+        {
+            float total = 0;
+            foreach (int i in columns)
+            {
+                var values = from rows in table.AsEnumerable()
+                            where (rows.Field<string>(columnToFilter) == valueToFilter)&& 
+                                  rows.Field<string>(columnToFilter) is not null
+                            select new { total = float.Parse(rows.Field<string>(i))}.total;
+
+                total += values.Sum();
+            }
+
+            return total;
+        }
+        /// <summary>
+        /// Funcion que retorna la suma de todos los valores en una columna
+        /// </summary>
+        /// <param name="table">Tabla de donde se scaran los datos</param>
+        /// <param name="column">Indice de las columna a sumar</param>
+        /// <returns></returns>
+        public static float GetTotalColumnSum(this DataTable table, int column)
+        {
+            
+            var values = from rows in table.AsEnumerable()
+                          where rows.Field<string>(column) is not null
+                          select new { total = float.Parse(rows.Field<string>(column))}.total;
+            
+            return values.Sum();
+        }
+        /// <summary>
+        /// Funcion que retorna la suma de todos los valores en una columna
+        /// </summary>
+        /// <param name="table">Tabla de donde se scaran los datos</param>
+        /// <param name="columnToFilter">Nombre de la columna donde se hara el filtro where</param>
+        /// <param name="valueToFilter">Valor de la columna donde se hara el filtro where</param>
+        /// <param name="columnToSum">Indice de las columna a sumar</param>
+        /// <returns></returns>
+        public static float GetTotalColumnSum(this DataTable table, string columnToFilter, string valueToFilter, int columnToSum)
+        {
+            var values = from rows in table.AsEnumerable()
+                          where rows.Field<string>(columnToFilter) == valueToFilter &&
+                                rows.Field<string>(columnToFilter) is not null
+                          select new { total = float.Parse(rows.Field<string>(columnToSum))}.total;
+            
+            return values.Sum();
+            
+        }
+
+        /// <summary>
+        /// Convierte un objeto a DataTable
+        /// </summary>
+        /// <param name="o">El objeto a convertir</param>
+        /// <returns>El DataTable</returns>
+        public static DataTable ConvertToDataTable(this object o)
+        {
+            try
+            {
+                return (DataTable)o;
+            }
+            catch(Exception e)
+            {
+                throw new InvalidCastException(e.Message);
+            }
+        }
     }
+
 }

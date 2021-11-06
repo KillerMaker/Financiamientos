@@ -66,7 +66,7 @@ namespace Financiamientos.Forms
             this.panel8 = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.btnCancelLoan = new System.Windows.Forms.Button();
+            this.btnExport = new System.Windows.Forms.Button();
             this.btnPayment = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
@@ -85,7 +85,6 @@ namespace Financiamientos.Forms
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1263, 11);
             this.panel4.TabIndex = 21;
-            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
             // label14
             // 
@@ -96,7 +95,6 @@ namespace Financiamientos.Forms
             this.label14.Size = new System.Drawing.Size(99, 25);
             this.label14.TabIndex = 20;
             this.label14.Text = "Prestamos";
-            this.label14.Click += new System.EventHandler(this.label14_Click);
             // 
             // panel1
             // 
@@ -116,7 +114,6 @@ namespace Financiamientos.Forms
             this.label1.Size = new System.Drawing.Size(354, 25);
             this.label1.TabIndex = 22;
             this.label1.Text = "Informacion Basica del Financiamiento";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // panel2
             // 
@@ -234,7 +231,6 @@ namespace Financiamientos.Forms
             this.lblCustomer.Size = new System.Drawing.Size(176, 25);
             this.lblCustomer.TabIndex = 3;
             this.lblCustomer.Text = "Nombre del Cliente";
-            this.lblCustomer.Click += new System.EventHandler(this.label3_Click);
             // 
             // lblNameIndicator
             // 
@@ -246,7 +242,6 @@ namespace Financiamientos.Forms
             this.lblNameIndicator.Size = new System.Drawing.Size(120, 40);
             this.lblNameIndicator.TabIndex = 2;
             this.lblNameIndicator.Text = "Cliente:";
-            this.lblNameIndicator.Click += new System.EventHandler(this.lblPayedLoans_Click);
             // 
             // panel3
             // 
@@ -464,7 +459,7 @@ namespace Financiamientos.Forms
             // panel9
             // 
             this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel9.Controls.Add(this.btnCancelLoan);
+            this.panel9.Controls.Add(this.btnExport);
             this.panel9.Controls.Add(this.btnPayment);
             this.panel9.Controls.Add(this.btnUpdate);
             this.panel9.Location = new System.Drawing.Point(86, 732);
@@ -472,21 +467,22 @@ namespace Financiamientos.Forms
             this.panel9.Size = new System.Drawing.Size(594, 92);
             this.panel9.TabIndex = 30;
             // 
-            // btnCancelLoan
+            // btnExport
             // 
-            this.btnCancelLoan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(243)))), ((int)(((byte)(43)))));
-            this.btnCancelLoan.FlatAppearance.BorderSize = 0;
-            this.btnCancelLoan.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.btnCancelLoan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelLoan.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCancelLoan.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelLoan.Image")));
-            this.btnCancelLoan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelLoan.Location = new System.Drawing.Point(408, 33);
-            this.btnCancelLoan.Name = "btnCancelLoan";
-            this.btnCancelLoan.Size = new System.Drawing.Size(163, 35);
-            this.btnCancelLoan.TabIndex = 33;
-            this.btnCancelLoan.Text = "Cancelar";
-            this.btnCancelLoan.UseVisualStyleBackColor = false;
+            this.btnExport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(243)))), ((int)(((byte)(43)))));
+            this.btnExport.FlatAppearance.BorderSize = 0;
+            this.btnExport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExport.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnExport.Image = ((System.Drawing.Image)(resources.GetObject("btnExport.Image")));
+            this.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExport.Location = new System.Drawing.Point(408, 33);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(163, 35);
+            this.btnExport.TabIndex = 33;
+            this.btnExport.Text = "Exportar";
+            this.btnExport.UseVisualStyleBackColor = false;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // btnPayment
             // 
@@ -526,7 +522,7 @@ namespace Financiamientos.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1384, 790);
+            this.ClientSize = new System.Drawing.Size(1384, 840);
             this.Controls.Add(this.panel9);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel7);
@@ -592,7 +588,7 @@ namespace Financiamientos.Forms
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Button btnCancelLoan;
+        private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.Button btnPayment;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Label lblPayedArrears;

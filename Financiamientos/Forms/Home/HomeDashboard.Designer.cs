@@ -51,9 +51,7 @@ namespace Financiamientos.Forms
             this.lblPayedLoans = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.dtgvArrears = new System.Windows.Forms.DataGridView();
             this.label9 = new System.Windows.Forms.Label();
             this.dtgvLast10Paymets = new System.Windows.Forms.DataGridView();
@@ -315,9 +313,7 @@ namespace Financiamientos.Forms
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.button3);
-            this.panel3.Controls.Add(this.button2);
             this.panel3.Controls.Add(this.label10);
-            this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.dtgvArrears);
             this.panel3.Controls.Add(this.label9);
             this.panel3.Controls.Add(this.dtgvLast10Paymets);
@@ -341,62 +337,30 @@ namespace Financiamientos.Forms
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(769, 36);
             this.button3.TabIndex = 22;
-            this.button3.Text = "Ver Cuotas Atrasadas";
+            this.button3.Text = "Exportar";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(243)))), ((int)(((byte)(43)))));
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(403, 295);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(377, 36);
-            this.button2.TabIndex = 20;
-            this.button2.Text = "Ver Ultimos 10 Pagos";
-            this.button2.UseVisualStyleBackColor = false;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(11, 348);
+            this.label10.Location = new System.Drawing.Point(11, 310);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(164, 20);
             this.label10.TabIndex = 18;
             this.label10.Text = "Cuotas mas Atrasadas";
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(243)))), ((int)(((byte)(43)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(11, 295);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(373, 36);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "Ver Cuotas que vencen Hoy";
-            this.button1.UseVisualStyleBackColor = false;
             // 
             // dtgvArrears
             // 
             this.dtgvArrears.AllowUserToAddRows = false;
             this.dtgvArrears.AllowUserToDeleteRows = false;
             this.dtgvArrears.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvArrears.Location = new System.Drawing.Point(11, 371);
+            this.dtgvArrears.Location = new System.Drawing.Point(11, 333);
             this.dtgvArrears.Name = "dtgvArrears";
             this.dtgvArrears.RowTemplate.Height = 25;
-            this.dtgvArrears.Size = new System.Drawing.Size(769, 294);
+            this.dtgvArrears.Size = new System.Drawing.Size(769, 332);
             this.dtgvArrears.TabIndex = 17;
             // 
             // label9
@@ -602,8 +566,6 @@ namespace Financiamientos.Forms
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridView dtgvInstallsmetDueToday;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label lblOverdureLoans;
         private System.Windows.Forms.Panel panel8;

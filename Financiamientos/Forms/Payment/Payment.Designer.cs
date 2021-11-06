@@ -164,7 +164,6 @@ namespace Financiamientos.Forms.Payment
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(774, 245);
             this.panel4.TabIndex = 51;
-            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
             // cmbPaymentMethod
             // 

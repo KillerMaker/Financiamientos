@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Financiamientos.Models.Reports
 {
-    class ReportMetaData
+    public class ReportMetaData
     {
         public readonly string creatorName;
         public readonly DateTime dateOfCreation;
