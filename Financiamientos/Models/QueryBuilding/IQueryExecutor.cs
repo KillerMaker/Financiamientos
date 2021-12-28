@@ -105,7 +105,7 @@ namespace Financiamientos.Models.QueryBuilding
                                 if (!headerIsSet)
                                 {
                                     for (int i = 0; i < reader.FieldCount; i++)
-                                        table.Columns.Add(reader.GetName(i).Replace("_", " ").MayusCadaEspacio());
+                                        table.Columns.Add(reader.GetName(i).Replace("_", " ").Capitalize());
 
                                     /*headerIsSet se pone a true una vez puesto el header de la tabla
                                     Para no tener que hacerlo cada vez que se itere en el Reader*/
@@ -114,7 +114,7 @@ namespace Financiamientos.Models.QueryBuilding
 
                                 //Itera por cada columna de la fila dada e inserta cada valor en el DataTable
                                 for (int i = 0; i < reader.FieldCount; i++)
-                                    values.Add(reader[i].ToString().MayusCadaEspacio());
+                                    values.Add(reader[i].ToString().Capitalize());
 
                                 table.Rows.Add(values.ToArray());
                                 values.Clear();

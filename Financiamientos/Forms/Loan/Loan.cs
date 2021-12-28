@@ -224,7 +224,7 @@ namespace Financiamientos.Forms
                 {
                     await Export(report);
 
-                    MessageBox.Show($@"El reporte se ha creado satisfactoriamente por el usuario {report.metaData.creatorName} {Environment.NewLine} en la ruta \n:{report.path}");
+                    MessageBox.Show($@"El reporte se ha creado satisfactoriamente por el usuario {report.metaData.creatorName} en la ruta \n:{report.path}");
                 }
              }
              catch (Exception a)

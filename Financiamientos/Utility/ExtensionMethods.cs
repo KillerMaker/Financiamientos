@@ -14,9 +14,9 @@ namespace Financiamientos.Utility
         /// </summary>
         /// <param name="cadena">Cadena desde la que se ejcuta la funcion</param>
         /// <returns>La cadena limpia de posible codigo infiltrado</returns>
-        public static string SQLInyectionClearString(this string cadena)
+        public static string SQLInyectionClearString(this string s)
         {
-            string s = cadena.ToUpper()
+            string c = s.ToUpper()
                 .Replace("--", "")
                 .Replace("'", "")
                 .Replace("<", "")
@@ -31,26 +31,26 @@ namespace Financiamientos.Utility
                 .Replace("CREATE", "")
                 .Replace("EXEC", "")
                 .Replace("ALTER", "")
-                .Replace(";", "").MayusCadaEspacio();
-            return s;
+                .Replace(";", "").Capitalize();
+            return c;
         }
 
         /// <summary>
         /// Transforma la cadena de entrada para que contenga masusculas luego de cada espacio
         /// </summary>
-        /// <param name="cadena">Cadena desde la que se ejecuta la funcion</param>
+        /// <param name="chars">Cadena desde la que se ejecuta la funcion</param>
         /// <returns>La cadena con mauysculas tras cada espacio</returns>
-        public static string MayusCadaEspacio(this string cadena)
+        public static string Capitalize(this string s)
         {
-            string s = "";
-            for (int i = 0; i < cadena.Length; i++)
+            string c = "";
+            for (int i = 0; i < s.Length; i++)
             {
-                if (i == 0 || cadena[i - 1] == ' ')
-                    s += cadena[i].ToString().ToUpper();
+                if (i == 0 || s[i - 1] == ' ')
+                    c += s[i].ToString().ToUpper();
                 else
-                    s += cadena[i].ToString().ToLower();
+                    c += s[i].ToString().ToLower();
             }
-            return s;
+            return c;
         }
         /// <summary>
         /// Funcion que permite saber si un string contiene uno o mas valores entre rango de valores

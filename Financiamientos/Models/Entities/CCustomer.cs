@@ -34,7 +34,7 @@ namespace Financiamientos.Models.Entities
             #endregion Validations
 
             #region Setting Values
-            this.name = name.MayusCadaEspacio();
+            this.name = name.Capitalize();
             this.idNumber = idNumber.Replace("-","");
             this.birthDate = birthDate;
             this.phone = phone.Replace("-","");

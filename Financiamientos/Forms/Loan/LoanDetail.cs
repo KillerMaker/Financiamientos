@@ -125,6 +125,7 @@ namespace Financiamientos.Forms
                 using (ExcelReport report = new ExcelReport(metaData, ConfigurationManager.AppSettings["loan-reports-path"]))
                 {
                     await Export(report);
+                    MessageBox.Show("El reporte se ha creado correctamente");
                 }
             }
             catch (Exception ex)

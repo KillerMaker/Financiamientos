@@ -61,6 +61,7 @@ namespace Financiamientos.Models.QueryBuilding
                         $"{columnName} AS {alias}" :
                         $",{columnName} AS {alias} \n";
 
+
                     break;
                 }
 
